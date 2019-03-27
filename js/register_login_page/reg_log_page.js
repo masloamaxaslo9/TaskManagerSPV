@@ -83,8 +83,14 @@ function requireDataRegister(event) {
   })
       .then(function (response) {
         console.log(response.status);
-        console.log(response.json());
+        return response.json();
       })
-      .catch();
+      .then(function (data) {
+        return data // temporarily !!!
+
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   event.preventDefault();
 }
