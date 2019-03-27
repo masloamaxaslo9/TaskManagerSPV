@@ -1,0 +1,77 @@
+// Page Login/Register
+// Global wraper page
+.log-reg-page {
+  height: 100vh;
+  overflow: hidden;
+  // Checkbox
+  .reg-log-pager-forms {
+    margin-top: 10vh;
+    .columns {
+      .col-5:nth-child(1) {
+        text-align: right;
+      }
+      .column {
+        i {
+          left: calc( 50% - .8rem );
+        }
+      }
+      .col-5:nth-child(3) {
+        text-align: left;
+        .form-switch {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+  h1 {
+    text-align: center;
+  }
+  // Forms
+  .forms-login-register {
+    height: calc( 100% - 10vh - 104px );
+    position: relative;
+    // Login Form
+    .login-form {
+      position: absolute;
+      width: calc( 100% - .8rem );
+      top: 0;
+      left: .5em;
+      transition: .3s;
+      form {
+        margin: 0 auto;
+        .button {
+          display: flex;
+          justify-content: center;
+          margin-top: 1.5em;
+        }
+      }
+    }
+    // Register Form
+    .register-form {
+      position: absolute;
+      width: calc( 100% - .8rem );
+      top: 0;
+      left: 100%;
+      transition: .3s;
+      overflow: auto;
+      height: 100%;
+      form {
+        margin: 0 auto;
+        .button {
+          display: flex;
+          justify-content: center;
+          margin-top: 1.5em;
+          margin-bottom: 5em;
+        }
+      }
+    }
+    &.register {
+      .login-form {
+        left: -100%;
+      }
+      .register-form {
+        left: .5em;
+      }
+    }
+  }
+}

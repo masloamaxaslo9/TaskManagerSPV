@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task Manager</title>
+    <!--Import Libs-->
+    <link rel="stylesheet" href="libs/spectre.min.css">
+    <link rel="stylesheet" href="libs/spectre-exp.min.css">
+    <link rel="stylesheet" href="libs/spectre-icons.min.css">
+    <!--Exit Libs-->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="log-reg-page">
+        <div class="reg-log-pager-forms container">
+            <div class="columns">
+                <div class="column col-5">
+                    <span class="form-switch">Login</span>
+                </div>
+                <div class="column">
+                    <label class="form-switch">
+                        <input type="checkbox" id="change-box">
+                        <i class="form-icon"></i>
+                    </label>
+                </div>
+                <div class="column col-5">
+                    <span class="form-switch">Register</span>
+                </div>
+            </div>
+            <h1>Task Manager</h1>
+        </div>
+
+        <div class="forms-login-register container" id="forms">
+            <div class="login-form">
+                <form action="#" name="login-form" class="col-3 col-lg-5 col-sm-8">
+                    <div class="form-group">
+                        <label class="form-label" for="input-email-login">E-mail:</label>
+                        <input class="form-input" type="email" id="input-email-login" placeholder="e-mail"  required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="input-password-login">Password confirmation:</label>
+                        <input class="form-input" type="password" id="input-password-login" placeholder="Password" required>
+                    </div>
+                    <div class="form-group button">
+                        <button type="submit" class="btn btn-primary input-group-btn">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <div class="register-form">
+                <form action="#" name="register-form" class="col-3 col-lg-5  col-sm-8">
+                    <div class="form-group">
+                        <label class="form-label" for="input-username">Username:</label>
+                        <input class="form-input" type="text" id="input-username" placeholder="Username" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="input-password">Password:</label>
+                        <input class="form-input" type="password" id="input-password" placeholder="Password" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="input-password-confirm">Password confirmation:</label>
+                        <input class="form-input" type="password" id="input-password-confirm" placeholder="Password" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="input-email">E-mail:</label>
+                        <input class="form-input" type="email" id="input-email" placeholder="e-mail" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="input-first-name">First name:</label>
+                        <input class="form-input" type="text" id="input-first-name" placeholder="First name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="input-last-name">Last name:</label>
+                        <input class="form-input" type="text" id="input-last-name" placeholder="Last name" required>
+                    </div>
+                    <div class="form-group button">
+                        <button type="submit" class="btn btn-primary input-group-btn">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/main.js"></script>
+<script src="js/register_login_page/reg_log_page.js"></script>
+</html>
