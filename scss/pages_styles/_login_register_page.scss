@@ -63,6 +63,17 @@
           margin-top: 1.5em;
           margin-bottom: 5em;
         }
+        .form-group {
+          .form-input-hint {
+            display: none;
+            margin-bottom: 0;
+          }
+          &.has-error {
+            .form-input-hint {
+              display: block;
+            }
+          }
+        }
       }
     }
     &.register {
