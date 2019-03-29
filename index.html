@@ -35,14 +35,16 @@
 
         <div class="forms-login-register container" id="all_forms">
             <div class="login-form">
-                <form action="./index.html" name="loginForm" class="col-3 col-lg-5 col-sm-8">
+                <form action="./pages/homePage.html" method="post" name="loginForm" class="col-3 col-lg-5 col-sm-8" onsubmit="return false;">
                     <div class="form-group">
                         <label class="form-label" for="input-email-login">E-mail:</label>
-                        <input class="form-input" type="email" id="input-email-login" placeholder="e-mail"  required>
+                        <input class="form-input" type="email" name="email" id="input-email-login" placeholder="e-mail"  required>
+                        <p class="form-input-hint">E-mail is not correct</p>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="input-password-login">Password confirmation:</label>
-                        <input class="form-input" type="password" id="input-password-login" placeholder="Password" required>
+                        <input class="form-input" type="password" name="password" id="input-password-login" placeholder="Password" required>
+                        <p class="form-input-hint">Password is not correct</p>
                     </div>
                     <div class="form-group button">
                         <button type="submit" class="btn btn-primary input-group-btn" id="login-submit">Submit</button>
@@ -50,7 +52,7 @@
                 </form>
             </div>
             <div class="register-form">
-                <form action="#" name="registerForm" class="col-3 col-lg-5  col-sm-8">
+                <form action="./pages/homePage.html" method="post" name="registerForm" class="col-3 col-lg-5  col-sm-8">
                     <div class="form-group">
                         <label class="form-label" for="input-username">Username:</label>
                         <input class="form-input" type="text" id="input-username" placeholder="Username" required>
@@ -84,6 +86,9 @@
         </div>
     </div>
 </body>
-<script src="js/main.js"></script>
-<script src="js/register_login_page/reg_log_page.js"></script>
+<script type="module" src="js/main.js"></script>
+<script src="js/other/loader.js"></script>
+<script src="js/other/validator.js"></script>
+<script src="js/register_login_page/requireAuth.js"></script>
+<script type="module" src="js/register_login_page/reg_log_page.js"></script>
 </html>

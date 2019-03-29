@@ -10,13 +10,17 @@ function changeLoginOrRegister() {
   login_register_forms.classList.remove('register');
 }
 
-// Get Data Login
+// Close Animation
+
+// Require login
+
 let userLogin = {};
 
+// document.getElementById('login-submit').addEventListener('click', validator.bind(null, 'loginForm')); // Start validator
 document.getElementById('login-submit').addEventListener('click', getDataLogin);
-document.getElementById('login-submit').addEventListener('click', requireDataLogin);
 
 function getDataLogin(event) {
+  event.preventDefault();
   let userData = document.querySelectorAll('.login-form > form > div > input'); // All inputs
 
   userLogin = {
@@ -24,39 +28,33 @@ function getDataLogin(event) {
     password: userData[1].value
   };
 
-  event.preventDefault(); // temporarily !!!
-}
-
-// Require Data Login
-
-function requireDataLogin(event) {
-  fetch('http://localhost:3000/clients', {
+  let option = {
     method: 'POST',
     body: JSON.stringify(userLogin)
-  })
-      .then(function (response) {
-        console.log(response.status);
-        return response.json();
-      })
-      .then(function (data) {
-        return data // temporarily !!!
+  };
 
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  if (!validator('loginForm')) {
+    return false;
+  } else {
+    requireAuth('http://localhost:3000/clients', option, requireAuthCallbackLogin);
 
-  event.preventDefault(); // temporarily !!!
+    function requireAuthCallbackLogin(data) {
+      document.forms.loginForm.submit();
+    }
+  }
 }
 
+// Close Require Login
 
-// Get Data Register
+// Require Register
+
 let userRegister = {};
 
 document.getElementById('register-submit').addEventListener('click', getDataRegister);
-document.getElementById('register-submit').addEventListener('click', requireDataRegister);
 
 function getDataRegister(event) {
+  event.preventDefault(); // temporarily !!!
+
   let userData = document.querySelectorAll('.register-form > form > div > input'); // All inputs
 
   userRegister = {
@@ -73,24 +71,18 @@ function getDataRegister(event) {
     return false
   }
 
-  event.preventDefault(); // temporarily !!!
-}
-
-function requireDataRegister(event) {
-  fetch('js/json.json', {
+  let option = {
     method: 'post',
     body: JSON.stringify(userRegister)
-  })
-      .then(function (response) {
-        console.log(response.status);
-        return response.json();
-      })
-      .then(function (data) {
-        return data // temporarily !!!
+  };
 
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  event.preventDefault();
+  requireAuth('http://localhost:3000/clients', option, requireAuthCallbackRegister);
+
+  function requireAuthCallbackRegister(data) {
+    console.log(data);
+    document.forms.registerForm.submit();
+  }
+
 }
+
+// Close Require Register
