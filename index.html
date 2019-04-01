@@ -55,28 +55,32 @@
                 <form action="./pages/homePage.html" method="post" name="registerForm" class="col-3 col-lg-5  col-sm-8">
                     <div class="form-group">
                         <label class="form-label" for="input-username">Username:</label>
-                        <input class="form-input" type="text" id="input-username" placeholder="Username" required>
+                        <input class="form-input" type="text" name="userNameReg" id="input-username" placeholder="Username" required>
+                        <p class="form-input-hint">Username is not correct</p>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="input-password">Password:</label>
-                        <input class="form-input" type="password" id="input-password" placeholder="Password" required>
+                        <input class="form-input" type="password" name="passwordReg" id="input-password" placeholder="Password" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="input-password-confirm">Password confirmation:</label>
-                        <input class="form-input" type="password" id="input-password-confirm" placeholder="Password" required>
+                        <input class="form-input" type="password" name="passwordRegConf" id="input-password-confirm" placeholder="Password" required>
                         <p class="form-input-hint">Passwords do not match</p>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="input-email">E-mail:</label>
-                        <input class="form-input" type="email" id="input-email" placeholder="e-mail" required>
+                        <input class="form-input" type="email" name="emailReg" id="input-email" placeholder="e-mail" required>
+                        <p class="form-input-hint">E-mail is not correct</p>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="input-first-name">First name:</label>
-                        <input class="form-input" type="text" id="input-first-name" placeholder="First name" required>
+                        <input class="form-input" type="text" name="firstNameReg" id="input-first-name" placeholder="First name" required>
+                        <p class="form-input-hint">First name is not correct</p>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="input-last-name">Last name:</label>
-                        <input class="form-input" type="text" id="input-last-name" placeholder="Last name" required>
+                        <input class="form-input" type="text" name="lastNameReg" id="input-last-name" placeholder="Last name" required>
+                        <p class="form-input-hint">Last name is not correct</p>
                     </div>
                     <div class="form-group button">
                         <button type="submit" class="btn btn-primary input-group-btn" id="register-submit">Submit</button>

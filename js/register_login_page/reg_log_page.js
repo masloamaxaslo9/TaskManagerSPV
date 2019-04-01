@@ -20,7 +20,8 @@ let userLogin = {};
 document.getElementById('login-submit').addEventListener('click', getDataLogin);
 
 function getDataLogin(event) {
-  event.preventDefault();
+  // event.preventDefault();
+
   let userData = document.querySelectorAll('.login-form > form > div > input'); // All inputs
 
   userLogin = {
@@ -28,19 +29,19 @@ function getDataLogin(event) {
     password: userData[1].value
   };
 
-  let option = {
-    method: 'POST',
-    body: JSON.stringify(userLogin)
-  };
-
   if (!validator('loginForm')) {
     return false;
   } else {
-    requireAuth('http://localhost:3000/clients', option, requireAuthCallbackLogin);
+      let option = {
+          method: 'POST',
+          body: JSON.stringify(userLogin)
+      };
 
-    function requireAuthCallbackLogin(data) {
-      document.forms.loginForm.submit();
-    }
+      requireAuth('http://localhost:3000/clients', option, requireAuthCallbackLogin);
+
+      function requireAuthCallbackLogin(data) {
+        document.forms.loginForm.submit();
+      }
   }
 }
 
@@ -53,7 +54,7 @@ let userRegister = {};
 document.getElementById('register-submit').addEventListener('click', getDataRegister);
 
 function getDataRegister(event) {
-  event.preventDefault(); // temporarily !!!
+  // event.preventDefault();
 
   let userData = document.querySelectorAll('.register-form > form > div > input'); // All inputs
 
@@ -66,21 +67,20 @@ function getDataRegister(event) {
     last_name: userData[5].value
   };
 
-  if (userRegister.password !== userRegister.password_confirm) {
-    document.getElementById('input-password-confirm').parentElement.classList.add('has-error');
-    return false
-  }
+  if (!validator('registerForm')) {
+      return false;
+  } else {
+      let option = {
+          method: 'post',
+          body: JSON.stringify(userRegister)
+      };
 
-  let option = {
-    method: 'post',
-    body: JSON.stringify(userRegister)
-  };
+      requireAuth('http://localhost:3000/clients', option, requireAuthCallbackRegister);
 
-  requireAuth('http://localhost:3000/clients', option, requireAuthCallbackRegister);
-
-  function requireAuthCallbackRegister(data) {
-    console.log(data);
-    document.forms.registerForm.submit();
+      function requireAuthCallbackRegister(data) {
+          console.log(data);
+          document.forms.registerForm.submit();
+      }
   }
 
 }
