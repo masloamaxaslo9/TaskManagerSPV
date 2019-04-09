@@ -44,10 +44,13 @@
       transition: .3s;
       overflow: hidden;
       display: none;
+      color: rgb(59, 67, 81)
+    ;
       &:hover {
         transform: scale(1.01);
         border: 1px solid #ced4db;
         background-color: #dfe5eb;
+        text-decoration: none;
       }
       .info {
         p {
