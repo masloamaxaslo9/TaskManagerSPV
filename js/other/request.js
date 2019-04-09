@@ -1,4 +1,4 @@
-function requireAuth(url, option, requireAuthCallback) {
+function request(url, option, requestCallback) {
     loaderFunc('show');
     fetch(url, option)
         .then(function (response) {
@@ -6,7 +6,7 @@ function requireAuth(url, option, requireAuthCallback) {
         })
         .then(function (data) {
             setTimeout(loaderFunc, 0, 'hide');
-            requireAuthCallback(data); // temporarily !!!
+            requestCallback(data); // temporarily !!!
         })
         .catch(function (error) {
             console.log(error);

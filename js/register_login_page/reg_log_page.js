@@ -16,7 +16,6 @@ function changeLoginOrRegister() {
 
 let userLogin = {};
 
-// document.getElementById('login-submit').addEventListener('click', validator.bind(null, 'loginForm')); // Start validator
 document.getElementById('login-submit').addEventListener('click', getDataLogin);
 
 function getDataLogin(event) {
@@ -34,13 +33,25 @@ function getDataLogin(event) {
   } else {
       let option = {
           method: 'POST',
+          headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+          },
+          credentials: 'include',
           body: JSON.stringify(userLogin)
       };
 
-      requireAuth('http://localhost:3000/clients', option, requireAuthCallbackLogin);
+      requireAuth('http://127.0.0.1:8000/api-users/login/', option, requireAuthCallbackLogin);
 
       function requireAuthCallbackLogin(data) {
-        document.forms.loginForm.submit();
+          if (data.status !== 200) {
+              let div = document.createElement('div');
+              div.classList.add('error');
+              div.innerText = data.statusText;
+              document.forms.loginForm.appendChild(div);
+          } else {
+              document.forms.loginForm.submit();
+          }
       }
   }
 }
@@ -61,7 +72,7 @@ function getDataRegister(event) {
   userRegister = {
     username: userData[0].value,
     password: userData[1].value,
-    password_confirm: userData[2].value,
+    password2: userData[2].value,
     email: userData[3].value,
     first_name: userData[4].value,
     last_name: userData[5].value
@@ -71,15 +82,33 @@ function getDataRegister(event) {
       return false;
   } else {
       let option = {
-          method: 'post',
+          method: 'POST',
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+          },
+          credentials: 'include',
           body: JSON.stringify(userRegister)
       };
 
-      requireAuth('http://localhost:3000/clients', option, requireAuthCallbackRegister);
+      requireAuth('http://127.0.0.1:8000/api-users/register/', option, requireAuthCallbackRegister);
 
       function requireAuthCallbackRegister(data) {
-          console.log(data);
-          document.forms.registerForm.submit();
+
+          if (data.status !== 201) {
+              let forTextError = data.json();
+              forTextError
+                  .then((result) => {
+                      console.log(result);
+                      if(result.username) {
+                          document.getElementById('error').innerText = result.username;
+                      } else if(result.email) {
+                          document.getElementById('error').innerText = result.email;
+                      }
+                  })
+          } else {
+              document.forms.registerForm.submit();
+          }
       }
   }
 

@@ -5,9 +5,73 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" type="image/png" href="../images/icon.png"/>
+    <!--Import Libs-->
+    <link rel="stylesheet" href="../libs/spectre.min.css">
+    <link rel="stylesheet" href="../libs/spectre-exp.min.css">
+    <link rel="stylesheet" href="../libs/spectre-icons.min.css">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Document</title>
 </head>
 <body>
-    <h1>Home Page!</h1>
+    <div class="home-page">
+        <header class="header container grid-xl">
+            <div class="columns">
+                <div class="logo column col-2"><img src="../images/icon.png" alt="photo"></div>
+                <div class="name column col-8"><h3>Test Testovit</h3></div>
+                <div class="create-desk column col-2"><button class="btn btn-lg" id="btn-open-modal-create-desk">Create Desk</button></div>
+            </div>
+        </header>
+        <hr>
+        <section class="section col-12" id="section">
+            <p id="not-found-desks">Desks not found.</p>
+            <div class="table container columns grid-lg" id="desk-def">
+                <div class="info column col-8">
+                    <h4>Test</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi doloremque id ipsam iste officiis quisquam rerum saepe.</p>
+                </div>
+                <div class="icon-table column col-4">
+                    <img src="../images/table_lg_gray.png" alt="photo_icon">
+                </div>
+            </div>
+        </section>
+        <footer class="footer col-12"></footer>
+    </div>
+    <!--Modals-->
+    <div class="modal" id="modal-create-desk">
+        <a href="#" id="mask-modal-create-desk" class="modal-overlay" aria-label="Close"></a>
+        <div class="modal-container">
+            <div class="modal-header">
+                <a href="#" class="btn btn-clear float-right" aria-label="Close"></a>
+                <div class="modal-title h5">Create Desk</div>
+            </div>
+            <form action="#" method="POST" name="formCreateDesk" id="form-create-desk" onsubmit="return false;">
+                <div class="modal-body">
+                    <div class="content">
+                        <div class="form-group">
+                            <label class="form-label" for="input-name">Title of the Desk:</label>
+                            <input class="form-input" type="text" name="title" id="input-name" placeholder="Title" required>
+                            <p class="form-input-hint">Title is not correct</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="input-description">Description of the Desk:</label>
+                            <input class="form-input" type="text" name="description" id="input-description" placeholder="Description" required>
+                            <p class="form-input-hint">Description is not correct</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn" id="btn-reset-desk">Reset</button>
+                    <button type="submit" class="btn btn-primary" id="btn-create-desk">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
+<script type="module" src="../js/main.js"></script>
+<script src="../js/other/loader.js"></script>
+<script src="../js/other/validator.js"></script>
+<script src="../js/other/request.js"></script>
+<script src="../js/other/getCookie.js"></script>
+<script type="module" src="../js/home_page/home_page.js"></script>
 </html>

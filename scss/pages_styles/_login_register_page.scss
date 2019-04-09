@@ -95,5 +95,9 @@
         left: .5em;
       }
     }
+    #error, .error {
+      text-align: center;
+      color: red;
+    }
   }
 }

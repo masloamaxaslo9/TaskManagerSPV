@@ -1,3 +1,91 @@
-body {
+.home-page {
+  overflow: hidden;
+  .header {
+    height: 100px;
+    .logo {
+      height: 100px;
+      text-align: center;
+      img {
+        margin-top: 5px;
+        height: 90px;
+      }
+    }
+    .name {
+      h3 {
+        margin: 0;
+        text-align: center;
+        line-height: 100px;
+      }
+    }
+    .create-desk {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
+  }
+  hr {
+    margin: 0;
+    height: 1px;
+    background-color: #dfe5eb;
+    border: none;
+  }
+  .section {
+    overflow: auto;
+    .table {
+      margin: 15px auto 0;
+      height: 115px;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #dfe5eb;
+      transition: .3s;
+      overflow: hidden;
+      display: none;
+      &:hover {
+        transform: scale(1.01);
+        border: 1px solid #ced4db;
+        background-color: #dfe5eb;
+      }
+      .info {
+        p {
+          margin: 0;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          height: 40px;
+          line-height: 40px;
+        }
+      }
+      .icon-table {
+        img {
+          float: right;
+          height: 75px;
+        }
+      }
+    }
+    #not-found-desks {
+      text-align: center;
+      margin: 2rem 0;
+      color: #a4a9af;
+    }
+  }
+  .footer {
+
+  }
 }
+
+#form-create-desk {
+  .form-group {
+    .form-input-hint {
+      display: none;
+      margin-bottom: 0;
+    }
+    &.has-error {
+      .form-input-hint {
+        display: block;
+      }
+    }
+  }
+}
+
+

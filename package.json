@@ -16,7 +16,8 @@
     "gulp-sourcemaps": "*",
     "gulp-uglify": "*",
     "jshint": "*",
-    "main-bower-files": "*"
+    "main-bower-files": "*",
+    "node-static": "^0.7.11"
   },
   "name": "3",
   "version": "1.0.0",

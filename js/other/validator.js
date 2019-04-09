@@ -6,6 +6,8 @@ function validator(formName) {
         return loginValidator();
     } else if (formName === 'registerForm') {
         return registerValidator();
+    } else if (formName === 'formCreateDesk') {
+        return createDeskValidator();
     }
 
     // Login validation
@@ -86,6 +88,38 @@ function validator(formName) {
         // Last name
         if(lastName.value === '') {
             lastName.parentElement.classList.add('has-error');
+            return false;
+        }
+
+        return true;
+
+    }
+
+    // Modal Create Desk validation
+    function createDeskValidator() {
+        let form = document.forms.formCreateDesk,
+            title = form.elements.title,
+            description = form.elements.description;
+
+        // arrAllData, itemsWithHasError, for remove class has-error at click
+        let arrAllData = [title, description];
+
+        let itemsWithHasError = arrAllData.filter(function (item) {
+            return item.parentElement.classList.contains('has-error');
+        });
+        itemsWithHasError.forEach(function (item) {
+            item.parentElement.classList.remove('has-error');
+        });
+
+        // Title
+        if (title.value === '' || title.value > 50) {
+            title.parentElement.classList.add('has-error');
+            return false;
+        }
+
+        //Description
+        if(description.value === '' || description.value > 200) {
+            description.parentElement.classList.add('has-error');
             return false;
         }
 
