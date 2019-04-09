@@ -31,7 +31,10 @@
     border: none;
   }
   .section {
-    overflow: auto;
+    min-height: calc( 100vh - 175px );
+    &:nth-last-child(2) {
+      margin-bottom: 15px;
+    }
     .table {
       margin: 15px auto 0;
       height: 115px;
@@ -70,10 +73,20 @@
     }
   }
   .footer {
-
+    border-top: 1px solid #b2b7bc;
+    height: 74px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      height: 50px;
+      position: relative;
+      left: -10px;
+      top: -4px;
+    }
   }
 }
-
+// Modal: for display error
 #form-create-desk {
   .form-group {
     .form-input-hint {
