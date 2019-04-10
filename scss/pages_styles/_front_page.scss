@@ -1,29 +1,5 @@
 .home-page {
   overflow: hidden;
-  .header {
-    height: 100px;
-    .logo {
-      height: 100px;
-      text-align: center;
-      img {
-        margin-top: 5px;
-        height: 90px;
-      }
-    }
-    .name {
-      h3 {
-        margin: 0;
-        text-align: center;
-        line-height: 100px;
-      }
-    }
-    .create-desk {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-  }
   hr {
     margin: 0;
     height: 1px;
@@ -31,7 +7,6 @@
     border: none;
   }
   .section {
-    min-height: calc( 100vh - 175px );
     &:nth-last-child(2) {
       margin-bottom: 15px;
     }
@@ -73,19 +48,6 @@
       text-align: center;
       margin: 2rem 0;
       color: #a4a9af;
-    }
-  }
-  .footer {
-    border-top: 1px solid #b2b7bc;
-    height: 74px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    img {
-      height: 50px;
-      position: relative;
-      left: -10px;
-      top: -4px;
     }
   }
 }

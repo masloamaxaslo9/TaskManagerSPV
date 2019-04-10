@@ -1,0 +1,24 @@
+.header {
+  height: 100px;
+  .logo {
+    height: 100px;
+    text-align: center;
+    img {
+      margin-top: 5px;
+      height: 90px;
+    }
+  }
+  .name {
+    h3 {
+      margin: 0;
+      text-align: center;
+      line-height: 100px;
+    }
+  }
+  .create-desk {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+}
