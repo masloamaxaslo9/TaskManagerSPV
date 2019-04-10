@@ -17,21 +17,36 @@
 <div class="desk-page">
     <header class="header container grid-xl">
         <div class="columns">
-            <div class="logo column col-2 col-md-4 col-sm-2"><img src="../images/icon.png" alt="photo"></div>
-            <div class="name column col-8 col-md-4 hide-sm"><h3>Task Manager</h3></div>
-            <div class="create-desk column col-2 col-md-4 col-ml-auto"><button class="btn btn-lg" id="btn-open-modal-create-desk">Create Desk</button></div>
+            <div class="logo column col-2 col-md-2 col-sm-2"><img src="../images/icon.png" alt="photo"></div>
+            <div class="name column col-6 col-md-4 hide-sm"><h3>Task Manager</h3></div>
+            <div class="create-desk column col-2 col-md-2 col-sm-4 col-xs-10 col-ml-auto"><button class="btn btn-lg" id="btn-open-modal-create-column">Create Column</button></div>
+            <div class="create-desk column col-2 col-md-2 col-sm-4 hide-xs col-ml-auto"><button class="btn btn-lg" id="btn-open-modal-create-desk">Create Desk</button></div>
         </div>
     </header>
     <hr>
     <section class="section col-12" id="section">
-
+        <p id="not-found-columns">Columns not found.</p>
+        <div class="conteiner">
+            <div class="columns inner-scrollbar">
+                <div class="column inner-scrollbar" id="column-def">
+                    <a class="task"></a>
+                    <button class="btn btn-primary btn-action btn-add-task"><i class="icon icon-plus"></i></button>
+                </div>
+                <div class="column" id="column-def1">
+                    <button class="btn btn-primary btn-action btn-add-task"><i class="icon icon-plus"></i></button>
+                </div>
+                <div class="column" id="column-def2">
+                    <button class="btn btn-primary btn-action btn-add-task"><i class="icon icon-plus"></i></button>
+                </div>
+            </div>
+        </div>
     </section>
     <footer class="footer col-12">
         <p>Task Manager 2019</p>
         <img src="../images/icon.png" alt="icon">
     </footer>
 </div>
-<!--Modals-->
+<!--Modal Create Desk-->
 <div class="modal" id="modal-create-desk">
     <a href="#" id="mask-modal-create-desk" class="modal-overlay" aria-label="Close"></a>
     <div class="modal-container">
@@ -61,11 +76,44 @@
         </form>
     </div>
 </div>
+<!--Modal Create Columns-->
+<div class="modal" id="modal-create-column">
+    <a href="#" id="mask-modal-create-column" class="modal-overlay" aria-label="Close"></a>
+    <div class="modal-container">
+        <div class="modal-header">
+            <a href="#" class="btn btn-clear float-right" aria-label="Close"></a>
+            <div class="modal-title h5">Create Desk</div>
+        </div>
+        <form action="#" method="POST" name="formCreateDesk" id="form-create-column" onsubmit="return false;">
+            <div class="modal-body">
+                <div class="content">
+                    <div class="form-group">
+                        <label class="form-label" for="input-name">Title of the Column:</label>
+                        <input class="form-input" type="text" name="title" id="input-name-column" placeholder="Title" required>
+                        <p class="form-input-hint">Title is not correct</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="reset" class="btn" id="btn-reset-column">Reset</button>
+                <button type="submit" class="btn btn-primary" id="btn-create-column">Create</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!--Notification-->
+<div class="toast toast-success" id="notification">
+    <button class="btn btn-clear float-right"></button>
+    Successfully
+</div>
 </body>
 <script type="module" src="../js/main.js"></script>
 <script src="../js/other/loader.js"></script>
 <script src="../js/other/validator.js"></script>
 <script src="../js/other/request.js"></script>
 <script src="../js/other/getCookie.js"></script>
+<script src="../js/other/createDesk.js"></script>
+<script src="../js/desk_page/createColumn.js"></script>
+<script src="../js/other/notification.js"></script>
 <script src="../js/desk_page/desk.js"></script>
 </html>

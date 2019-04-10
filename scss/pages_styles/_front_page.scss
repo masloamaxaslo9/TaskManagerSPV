@@ -1,11 +1,5 @@
 .home-page {
   overflow: hidden;
-  hr {
-    margin: 0;
-    height: 1px;
-    background-color: #dfe5eb;
-    border: none;
-  }
   .section {
     &:nth-last-child(2) {
       margin-bottom: 15px;

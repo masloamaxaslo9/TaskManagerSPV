@@ -6,3 +6,38 @@ body {
 * {
   box-sizing: border-box;
 }
+
+hr {
+  margin: 0;
+  height: 1px;
+  background-color: #dfe5eb;
+  border: none;
+}
+
+// Notification style
+
+#notification {
+  position: fixed;
+  width: auto;
+  right: -300px;
+  top: 120px;
+  transition: .5s;
+  &.active {
+    right: 15px;
+    top: 120px;
+  }
+}
+
+// Scroll style
+
+.inner-scrollbar{
+  overflow: auto;
+  &::-webkit-scrollbar{
+    height: 5px;
+  }
+  &::-webkit-scrollbar-thumb{
+    background-color: gray;
+    border-radius: 6px;
+  }
+}
+
