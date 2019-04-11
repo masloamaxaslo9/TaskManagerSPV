@@ -17,7 +17,7 @@
 <div class="desk-page">
     <header class="header container grid-xl">
         <div class="columns">
-            <div class="logo column col-2 col-md-2 col-sm-2"><img src="../images/icon.png" alt="photo"></div>
+            <a href="homePage.html" class="logo column col-2 col-md-2 col-sm-2"><img src="../images/icon.png" alt="photo"></a>
             <div class="name column col-6 col-md-4 hide-sm"><h3>Task Manager</h3></div>
             <div class="create-desk column col-2 col-md-2 col-sm-4 col-xs-10 col-ml-auto"><button class="btn btn-lg" id="btn-open-modal-create-column">Create Column</button></div>
             <div class="create-desk column col-2 col-md-2 col-sm-4 hide-xs col-ml-auto"><button class="btn btn-lg" id="btn-open-modal-create-desk">Create Desk</button></div>
@@ -31,7 +31,7 @@
                 <div class="column inner-scrollbar" id="column-def">
                     <h6 class="name-column">Test Name</h6>
                     <a class="task"></a>
-                    <button class="btn btn-primary btn-action btn-add-task" id="btn-open-modal-create-task"><i class="icon icon-plus"></i></button>
+                    <button class="btn btn-primary btn-action btn-add-task" id="btn-open-modal-create-task" data-column-id="def"><i class="icon icon-plus"></i></button>
                 </div>
             </div>
         </div>
@@ -159,7 +159,7 @@
 <script src="../js/other/buildingDeskOrColumnOrTask.js"></script>
 <script src="../js/other/modalDesk.js"></script>
 <script src="../js/desk_page/modalColumn.js"></script>
-<script src="../js/desk_page/modalTask.js"></script>
 <script src="../js/other/notification.js"></script>
 <script src="../js/desk_page/desk.js"></script>
+<script src="../js/desk_page/modalTask.js"></script>
 </html>

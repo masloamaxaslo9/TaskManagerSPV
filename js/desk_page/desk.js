@@ -57,17 +57,25 @@ function createColumnsOrColumn(columnsOrColumn) {
     if (columnsOrColumn instanceof Array) {
         // Create Column in window
         columnsOrColumn.forEach(function (column, i) {
+            console.log(column);
+            console.log(i);
             let columnCop = columnDefault.cloneNode(true);
             columnCop.style.display = 'inline-block';
             columnCop.setAttribute('id', `column-${i}`);
+            columnCop.setAttribute('data-column-id', column.id);
             columnCop.querySelector('.name-column').innerHTML = column.name;
-            document.getElementById('for-append-child').appendChild(columnCop);//.insertBefore(columnCop, document.getElementById('for-append-child').children[1]);
-        })
+            columnCop.querySelector('.btn-action').setAttribute('id', `btn-open-modal-create-task-${column.id}`);
+            document.getElementById('for-append-child').appendChild(columnCop);
+        });
+        console.log('Всього колонок ' + columnsOrColumn.length);
     } else {
         let columnCop = columnDefault.cloneNode(true);
         columnCop.style.display = 'inline-block';
         columnCop.setAttribute('id', `column-${columnsOrColumn.length}`);
+        columnCop.setAttribute('data-column-id', columnsOrColumn.id);
         columnCop.querySelector('.name-column').innerHTML = columnsOrColumn.name;
-        document.getElementById('for-append-child').appendChild(columnCop);//.insertBefore(columnCop, document.getElementById('for-append-child').children[1]);
+        columnCop.querySelector('.btn-action').setAttribute('id', `btn-open-modal-create-task-${columnsOrColumn.id}`);
+        document.getElementById('for-append-child').appendChild(columnCop);
+        console.log(columnsOrColumn);
     }
 }

@@ -25,6 +25,11 @@
         flex: none;
         overflow: hidden;
         overflow-y: scroll;
+        &:hover {
+          .name-column {
+            width: calc( 100% + 22px );
+          }
+        }
         &::-webkit-scrollbar{
           width: 5px;
         }
@@ -32,11 +37,12 @@
           margin: 8px 0;
           text-align: left;
           padding: 0 0 5px 15px;
-          width: calc( 100% + 22px );
+          width: calc( 75% + 22px );
           position: relative;
           left: -8px;
           text-overflow: ellipsis;
           white-space: nowrap;
+          transition: .3s;
           border-bottom: 1px solid #b2b7bc;
         }
         .btn-add-task {
@@ -53,8 +59,8 @@
           border: 1px solid #b2b7bc;
           transition: .3s;
           &:hover {
-            transform: scale(1.01);
-            background-color: #dfe5eb;
+            //transform: scale(1.01);
+            //background-color: #b2b7bc;
             text-decoration: none;
             cursor: pointer;
           }
