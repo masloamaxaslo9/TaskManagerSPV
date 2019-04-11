@@ -8,6 +8,8 @@ function validator(formName) {
         return registerValidator();
     } else if (formName === 'formCreateDesk') {
         return createDeskValidator();
+    } else if (formName === 'formCreateColumn') {
+        return createColumnValidator();
     }
 
     // Login validation
@@ -120,6 +122,31 @@ function validator(formName) {
         //Description
         if(description.value === '' || description.value > 200) {
             description.parentElement.classList.add('has-error');
+            return false;
+        }
+
+        return true;
+
+    }
+
+    // Modal Create Column validation
+    function createColumnValidator() {
+        let form = document.forms.formCreateColumn,
+            name = form.elements.name;
+
+        // arrAllData, itemsWithHasError, for remove class has-error at click
+        let arrAllData = [name];
+
+        let itemsWithHasError = arrAllData.filter(function (item) {
+            return item.parentElement.classList.contains('has-error');
+        });
+        itemsWithHasError.forEach(function (item) {
+            item.parentElement.classList.remove('has-error');
+        });
+
+        // Name
+        if (name.value === '' || name.value > 50) {
+            name.parentElement.classList.add('has-error');
             return false;
         }
 

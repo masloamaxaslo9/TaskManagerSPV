@@ -46,7 +46,9 @@
   }
 }
 // Modal: for display error
-#form-create-desk {
+#form-create-desk,
+#form-create-column,
+#form-create-task {
   .form-group {
     .form-input-hint {
       display: none;

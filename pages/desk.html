@@ -27,16 +27,11 @@
     <section class="section col-12" id="section">
         <p id="not-found-columns">Columns not found.</p>
         <div class="conteiner">
-            <div class="columns inner-scrollbar">
+            <div class="columns inner-scrollbar" id="for-append-child">
                 <div class="column inner-scrollbar" id="column-def">
+                    <h6 class="name-column">Test Name</h6>
                     <a class="task"></a>
-                    <button class="btn btn-primary btn-action btn-add-task"><i class="icon icon-plus"></i></button>
-                </div>
-                <div class="column" id="column-def1">
-                    <button class="btn btn-primary btn-action btn-add-task"><i class="icon icon-plus"></i></button>
-                </div>
-                <div class="column" id="column-def2">
-                    <button class="btn btn-primary btn-action btn-add-task"><i class="icon icon-plus"></i></button>
+                    <button class="btn btn-primary btn-action btn-add-task" id="btn-open-modal-create-task"><i class="icon icon-plus"></i></button>
                 </div>
             </div>
         </div>
@@ -82,14 +77,14 @@
     <div class="modal-container">
         <div class="modal-header">
             <a href="#" class="btn btn-clear float-right" aria-label="Close"></a>
-            <div class="modal-title h5">Create Desk</div>
+            <div class="modal-title h5">Create Column</div>
         </div>
-        <form action="#" method="POST" name="formCreateDesk" id="form-create-column" onsubmit="return false;">
+        <form action="#" method="POST" name="formCreateColumn" id="form-create-column" onsubmit="return false;">
             <div class="modal-body">
                 <div class="content">
                     <div class="form-group">
                         <label class="form-label" for="input-name">Title of the Column:</label>
-                        <input class="form-input" type="text" name="title" id="input-name-column" placeholder="Title" required>
+                        <input class="form-input" type="text" name="name" id="input-name-column" placeholder="Title" required>
                         <p class="form-input-hint">Title is not correct</p>
                     </div>
                 </div>
@@ -97,6 +92,55 @@
             <div class="modal-footer">
                 <button type="reset" class="btn" id="btn-reset-column">Reset</button>
                 <button type="submit" class="btn btn-primary" id="btn-create-column">Create</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!--Modal Create Task-->
+<div class="modal" id="modal-create-task">
+    <a href="#" id="mask-modal-create-task" class="modal-overlay" aria-label="Close"></a>
+    <div class="modal-container">
+        <div class="modal-header">
+            <a href="#" class="btn btn-clear float-right" aria-label="Close"></a>
+            <div class="modal-title h5">Create Task</div>
+        </div>
+        <form action="#" method="POST" name="formCreateTask" id="form-create-task" onsubmit="return false;">
+            <div class="modal-body">
+                <div class="content">
+                    <div class="form-group">
+                        <label class="form-label" for="input-name-task">Title of the Task:</label>
+                        <input class="form-input" type="text" name="name" id="input-name-task" placeholder="Title" required>
+                        <p class="form-input-hint">Title is not correct</p>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="input-description-task">Description of the Task:</label>
+                        <input class="form-input" type="text" name="description" id="input-description-task" placeholder="Description" required>
+                        <p class="form-input-hint">Description is not correct</p>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="input-deadline-task">Deadline of the task:</label>
+                        <input class="form-input" type="date" name="deadline" id="input-deadline-task" placeholder="Deadline" required>
+                        <p class="form-input-hint">Deadline is not correct</p>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="input-priority-task">Priority of the task:</label>
+                        <select class="form-select" name="priority" id="input-priority-task">
+                            <option>HIGH</option>
+                            <option>MEDIUM</option>
+                            <option>LOW</option>
+                        </select>
+                        <p class="form-input-hint">Priority is not correct</p>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="input-image-task">Image of the task:</label>
+                        <input class="form-input" type="file" name="image" id="input-image-task" required>
+                        <p class="form-input-hint">File is not correct</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="reset" class="btn" id="btn-reset-task">Reset</button>
+                <button type="submit" class="btn btn-primary" id="btn-create-task">Create</button>
             </div>
         </form>
     </div>
@@ -112,8 +156,10 @@
 <script src="../js/other/validator.js"></script>
 <script src="../js/other/request.js"></script>
 <script src="../js/other/getCookie.js"></script>
-<script src="../js/other/createDesk.js"></script>
-<script src="../js/desk_page/createColumn.js"></script>
+<script src="../js/other/buildingDeskOrColumnOrTask.js"></script>
+<script src="../js/other/modalDesk.js"></script>
+<script src="../js/desk_page/modalColumn.js"></script>
+<script src="../js/desk_page/modalTask.js"></script>
 <script src="../js/other/notification.js"></script>
 <script src="../js/desk_page/desk.js"></script>
 </html>

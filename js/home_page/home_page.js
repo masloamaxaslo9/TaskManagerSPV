@@ -40,6 +40,7 @@ function buildingDesks(desksOrDesk) {
 }
 
 function createDeskOrDesks(desksOrDesk) {
+
     let tableDefault = document.getElementById('desk-def').cloneNode(true); // Hidden desk for inner desks
     if (desksOrDesk instanceof Array) {
         // Create Desks in window
@@ -47,6 +48,7 @@ function createDeskOrDesks(desksOrDesk) {
             let table = tableDefault.cloneNode(true);
             table.style.display = 'flex';
             table.setAttribute('id', `desk-${i}`);
+            table.setAttribute('data-id-desk', desk.id);
             table.querySelector('.info > h4').innerHTML = desk.name;
             table.querySelector('.info > p').innerHTML = desk.description;
             document.getElementById('section').insertBefore(table, document.getElementById('section').children[1]);
@@ -55,8 +57,27 @@ function createDeskOrDesks(desksOrDesk) {
         let table = tableDefault.cloneNode(true);
         table.style.display = 'flex';
         table.setAttribute('id', `desk-${desksOrDesk.length}`);
+        table.setAttribute('data-id-desk', desksOrDesk.id);
         table.querySelector('.info > h4').innerHTML = desksOrDesk.name;
         table.querySelector('.info > p').innerHTML = desksOrDesk.description;
         document.getElementById('section').insertBefore(table, document.getElementById('section').children[1]);
     }
+}
+
+// Click of the desk
+
+document.getElementById('section').addEventListener('click', clickOnDesk);
+
+function clickOnDesk(event) {
+
+    let target = event.target;
+
+    while (target !== this) {
+        if (target.tagName === 'A') {
+            setCookie('desk_id', target.getAttribute('data-id-desk'));
+            return;
+        }
+        target = target.parentNode;
+    }
+
 }

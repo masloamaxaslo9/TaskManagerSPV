@@ -8,4 +8,5 @@ function openOrCloceModalColumn() {
     document.getElementById('modal-create-column').classList.toggle('active');
 }
 
-// є варіант зробити одну функцію конструктор з createDesk.js
+// Start form require
+document.getElementById('btn-create-column').addEventListener('click', funcCreate);

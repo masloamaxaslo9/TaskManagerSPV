@@ -4,7 +4,7 @@
     text-align: center;
     margin: 2rem 0;
     color: #a4a9af;
-    display: none; ///////////////////////////////////////////////////////////////////////
+    //display: none; ///////////////////////////////////////////////////////////////////////
   }
   .section {
     overflow: hidden;
@@ -16,7 +16,7 @@
       white-space: nowrap;
       margin: 0 auto;
       .column {
-        display: inline-block;
+        display: none; // Show version: inline-block
         vertical-align: top;
         position: relative;
         width: 400px;
@@ -27,6 +27,17 @@
         overflow-y: scroll;
         &::-webkit-scrollbar{
           width: 5px;
+        }
+        .name-column {
+          margin: 8px 0;
+          text-align: left;
+          padding: 0 0 5px 15px;
+          width: calc( 100% + 22px );
+          position: relative;
+          left: -8px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          border-bottom: 1px solid #b2b7bc;
         }
         .btn-add-task {
           margin-top: 8px;
@@ -53,5 +64,11 @@
         white-space: pre;
       }
     }
+  }
+}
+
+#form-create-task {
+  input[type='file'] {
+    border: .05rem solid #bcc3ce;
   }
 }
