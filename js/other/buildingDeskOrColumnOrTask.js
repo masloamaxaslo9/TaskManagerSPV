@@ -82,7 +82,22 @@ function funcCreate(event) {
                             buildingDesks(result);
                         } else if (document.getElementById('section').parentElement.classList.contains('desk-page')) {
                             notification(data.status, result);
-                            buildingColumnsAndTask(result);
+
+                            let target = event.target;
+
+                            while (target !== this) {
+                                if (target.tagName === 'BUTTON') {
+                                    console.log(target);
+                                    if (target.id === 'btn-create-column') {
+                                        setCookie('column_id', target.getAttribute('data-column-id'));
+                                        buildingColumns(result);
+                                    } else if(target.id === 'btn-create-task') {
+                                        buildingTasks(result);
+                                    }
+                                    return;
+                                }
+                                target = target.parentNode;
+                            }
                         } else {
                             console.log('Inner page')
                         }

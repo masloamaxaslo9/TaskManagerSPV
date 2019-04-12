@@ -35,7 +35,7 @@ function loadColumnsAndTask() {
             let result = data.json();
             result
                 .then((resolve) => {
-                    buildingColumnsAndTask(resolve);
+                    buildingColumns(resolve);
                 })
         }
     }
@@ -43,7 +43,9 @@ function loadColumnsAndTask() {
 
 loadColumnsAndTask();
 
-function buildingColumnsAndTask(columnsOrColumn) {
+// Column and Columns
+
+function buildingColumns(columnsOrColumn) {
     if (columnsOrColumn.length === 0) {
         return false;
     } else {
@@ -54,11 +56,13 @@ function buildingColumnsAndTask(columnsOrColumn) {
 
 function createColumnsOrColumn(columnsOrColumn) {
     let columnDefault = document.getElementById('column-def').cloneNode(true); // Hidden column for inner column
+
     if (columnsOrColumn instanceof Array) {
         // Create Column in window
         columnsOrColumn.forEach(function (column, i) {
             console.log(column);
             console.log(i);
+            // Bilding Coluns
             let columnCop = columnDefault.cloneNode(true);
             columnCop.style.display = 'inline-block';
             columnCop.setAttribute('id', `column-${i}`);
@@ -66,6 +70,9 @@ function createColumnsOrColumn(columnsOrColumn) {
             columnCop.querySelector('.btn-action').setAttribute('data-column-id', column.id);
             columnCop.querySelector('.btn-action').setAttribute('id', `btn-open-modal-create-task-${column.id}`);
             document.getElementById('for-append-child').appendChild(columnCop);
+            // Building Task
+            // taskDefault.style.display = 'block';
+
         });
         console.log('Всього колонок ' + columnsOrColumn.length);
     } else {
@@ -79,4 +86,19 @@ function createColumnsOrColumn(columnsOrColumn) {
         document.getElementById('for-append-child').appendChild(columnCop);
         console.log(columnsOrColumn);
     }
+}
+
+// Task and Tasks
+
+function buildingTasks(tasksOrTask) {
+    if (tasksOrTask.length === 0) {
+        return false;
+    } else {
+        createTasksOrTask(tasksOrTask);
+    }
+}
+
+function createTasksOrTask(tasksOrTask) {
+    let taskDefault = document.getElementById('column-def-task-def').cloneNode(true); // Hidden task for inner column
+    console.log(taskDefault);
 }
