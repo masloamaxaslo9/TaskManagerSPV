@@ -25,9 +25,9 @@ function loadColumnsAndTask() {
         credentials: 'include'
     };
     let url = `/api-desks/${getCookie('desk_id')}/columns/`;
-    request(`http://127.0.0.1:8000${url}`, option, requestCallbackloadDesk);
+    request(`http://127.0.0.1:8000${url}`, option, requestCallbackloadColumn);
 
-    function requestCallbackloadDesk(data) {
+    function requestCallbackloadColumn(data) {
         if (data.status !== 200) {
             console.log(data.status);
             console.log(data);
@@ -35,7 +35,7 @@ function loadColumnsAndTask() {
             let result = data.json();
             result
                 .then((resolve) => {
-                    buildingColumns(resolve);
+                    buildingColumnsAndTask(resolve);
                 })
         }
     }
@@ -43,7 +43,7 @@ function loadColumnsAndTask() {
 
 loadColumnsAndTask();
 
-function buildingColumns(columnsOrColumn) {
+function buildingColumnsAndTask(columnsOrColumn) {
     if (columnsOrColumn.length === 0) {
         return false;
     } else {
@@ -62,8 +62,8 @@ function createColumnsOrColumn(columnsOrColumn) {
             let columnCop = columnDefault.cloneNode(true);
             columnCop.style.display = 'inline-block';
             columnCop.setAttribute('id', `column-${i}`);
-            columnCop.setAttribute('data-column-id', column.id);
             columnCop.querySelector('.name-column').innerHTML = column.name;
+            columnCop.querySelector('.btn-action').setAttribute('data-column-id', column.id);
             columnCop.querySelector('.btn-action').setAttribute('id', `btn-open-modal-create-task-${column.id}`);
             document.getElementById('for-append-child').appendChild(columnCop);
         });
@@ -74,6 +74,7 @@ function createColumnsOrColumn(columnsOrColumn) {
         columnCop.setAttribute('id', `column-${columnsOrColumn.length}`);
         columnCop.setAttribute('data-column-id', columnsOrColumn.id);
         columnCop.querySelector('.name-column').innerHTML = columnsOrColumn.name;
+        columnCop.querySelector('.btn-action').setAttribute('data-column-id', columnsOrColumn.id);
         columnCop.querySelector('.btn-action').setAttribute('id', `btn-open-modal-create-task-${columnsOrColumn.id}`);
         document.getElementById('for-append-child').appendChild(columnCop);
         console.log(columnsOrColumn);

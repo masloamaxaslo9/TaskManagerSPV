@@ -10,6 +10,8 @@ function validator(formName) {
         return createDeskValidator();
     } else if (formName === 'formCreateColumn') {
         return createColumnValidator();
+    } else if (formName === 'formCreateTask') {
+        return createTaskValidator();
     }
 
     // Login validation
@@ -147,6 +149,40 @@ function validator(formName) {
         // Name
         if (name.value === '' || name.value > 50) {
             name.parentElement.classList.add('has-error');
+            return false;
+        }
+
+        return true;
+
+    }
+
+    // Modal Create Task validation
+    function createTaskValidator() {
+        let form = document.forms.formCreateTask,
+            name = form.elements.name,
+            description = form.elements.description,
+            task_deadline = form.elements.deadline,
+            priority = form.elements.priority;
+
+        // arrAllData, itemsWithHasError, for remove class has-error at click
+        let arrAllData = [name, description, task_deadline, priority];
+
+        let itemsWithHasError = arrAllData.filter(function (item) {
+            return item.parentElement.classList.contains('has-error');
+        });
+        itemsWithHasError.forEach(function (item) {
+            item.parentElement.classList.remove('has-error');
+        });
+
+        // Name
+        if (name.value === '' || name.value > 50) {
+            name.parentElement.classList.add('has-error');
+            return false;
+        }
+
+        // Description
+        if (description.value === '' || description.value > 1500) {
+            description.parentElement.classList.add('has-error');
             return false;
         }
 

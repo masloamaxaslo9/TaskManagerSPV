@@ -8,6 +8,7 @@
   }
   .section {
     overflow: hidden;
+    height: calc( 100vh - 175px );
     .columns {
       display: block;
       height: calc( 100vh - 175px);

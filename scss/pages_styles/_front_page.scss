@@ -1,9 +1,7 @@
 .home-page {
   overflow: hidden;
   .section {
-    &:nth-last-child(2) {
-      margin-bottom: 15px;
-    }
+    overflow: auto;
     .table {
       margin: 15px auto 0;
       height: 115px;

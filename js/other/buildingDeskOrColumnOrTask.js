@@ -4,6 +4,7 @@ let objCreate = {};
 let formName;
 let url;
 let closeModule;
+let contentType;
 
 
 
@@ -13,6 +14,7 @@ function funcCreate(event) {
 
     if(event.target.getAttribute('id') === 'btn-create-desk') { // All variables for Desk.
         formName = 'formCreateDesk';
+        contentType = 'application/json';
         url = `/api-desks/`;
         closeModule = document.getElementById('modal-create-desk');
         objCreate = {
@@ -21,6 +23,7 @@ function funcCreate(event) {
         };
     } else if (event.target.getAttribute('id') === 'btn-create-column') { // All variables for Column.
         formName = 'formCreateColumn';
+        contentType = 'application/json';
         url = `/api-desks/${getCookie('desk_id')}/columns/`;
         closeModule = document.getElementById('modal-create-column');
         objCreate = {
@@ -28,14 +31,15 @@ function funcCreate(event) {
         };
     } else if (event.target.getAttribute('id') === 'btn-create-task') { // All variables for Task.
         formName = 'formCreateTask';
-        url = `/api-desks/${desk_id}/columns/${column_id}/tasks/`;
+        contentType = 'application/json';
+        url = `/api-desks/${getCookie('desk_id')}/columns/${getCookie('column_id')}/tasks/`;
         closeModule = document.getElementById('modal-create-task');
         objCreate = {
             name: document.getElementById('input-name-task').value,
             description: document.getElementById('input-description-task').value,
             task_deadline: document.getElementById('input-deadline-task').value,
-            priority: document.getElementById('input-priority-task').value,
-            image: document.getElementById('input-image-task').value
+            current_executor: document.getElementById('input-current-executor-task').value,
+            priority: document.getElementById('input-priority-task').value
         };
     }
 
@@ -52,7 +56,7 @@ function funcCreate(event) {
             headers: {
                 'X-CSRFToken': csrftoken,
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': contentType
             },
             credentials: 'include',
             body: JSON.stringify(objCreate)
@@ -78,7 +82,7 @@ function funcCreate(event) {
                             buildingDesks(result);
                         } else if (document.getElementById('section').parentElement.classList.contains('desk-page')) {
                             notification(data.status, result);
-                            buildingColumns(result);
+                            buildingColumnsAndTask(result);
                         } else {
                             console.log('Inner page')
                         }
