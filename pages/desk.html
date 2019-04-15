@@ -11,9 +11,10 @@
     <link rel="stylesheet" href="../libs/spectre-exp.min.css">
     <link rel="stylesheet" href="../libs/spectre-icons.min.css">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Document</title>
+    <title>Desk</title>
 </head>
 <body>
+<!--Page-->
 <div class="desk-page">
     <header class="header container grid-xl">
         <div class="columns">
@@ -30,7 +31,11 @@
             <div class="columns inner-scrollbar" id="for-append-child">
                 <div class="column inner-scrollbar" id="column-def">
                     <h6 class="name-column">Test Name</h6>
-                    <a class="task" id="column-def-task-def"></a>
+                    <div class="task" id="column-def-task-def">
+                        <h5 class="task-name">Task Name</h5>
+                        <kbd class="task-deadline">2019-04-20</kbd>
+                        <p class="task-priority">Priority: <span class="label">Low</span></p>
+                    </div>
                     <button class="btn btn-primary btn-action btn-add-task" id="btn-open-modal-create-task-def" data-column-id="def" onclick="openOrCloseModalTask(event);"><i class="icon icon-plus"></i></button>
                 </div>
             </div>
@@ -124,15 +129,15 @@
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="input-current-executor-task">Executor of the task:</label>
-                        <input class="form-input" type="text" name="currentExecutor" id="input-current-executor-task" placeholder="Executor" required>
+                        <select class="form-select" name="currentExecutor" id="input-current-executor-task"></select>
                         <p class="form-input-hint">Executor is not correct</p>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="input-priority-task">Priority of the task:</label>
                         <select class="form-select" name="priority" id="input-priority-task">
-                            <option>Високий</option>
-                            <option>Середній</option>
-                            <option>Низький</option>
+                            <option>High</option>
+                            <option>Medium</option>
+                            <option>Low</option>
                         </select>
                         <p class="form-input-hint">Priority is not correct</p>
                     </div>
@@ -143,6 +148,51 @@
                 <button type="submit" class="btn btn-primary" id="btn-create-task">Create</button>
             </div>
         </form>
+    </div>
+</div>
+<!--Modal Task-->
+<div class="modal" id="modal-task">
+    <a href="#" class="modal-overlay" aria-label="Close"></a>
+    <div class="modal-container">
+        <div class="modal-header">
+            <a href="#" class="btn btn-clear float-right" aria-label="Close"></a>
+            <div class="modal-title h5">Modal title</div>
+        </div>
+        <div class="modal-body">
+            <div class="content">
+                <div class="modal-header-task">
+                    <p class="priority-task">Priority: <span class="label">def</span></p>
+                    <label class="column-task">
+                        <select class="form-select">
+                            <option>Start</option>
+                            <option>Progress</option>
+                            <option>Finish</option>
+                        </select>
+                    </label>
+                    <p class="deadline-task">Deadline: <kbd class="h6">def</kbd></p>
+                </div>
+                <div class="content">
+                    <p class="description-task">Def</p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <!--Comments-->
+            <form action="#" method="POST" name="formCreateComment" id="form-create-comment" onsubmit="return false;">
+                <div class="modal-body">
+                    <div class="content">
+                        <div class="form-group">
+                            <label class="form-label" for="input-task-comment">Comment</label>
+                            <textarea class="form-input" id="input-task-comment" placeholder="Comments" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer-submit-comment">
+                    <button type="reset" class="btn" id="btn-reset-comment">Reset</button>
+                    <button type="submit" class="btn btn-primary" id="btn-create-comment">Submit</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 <!--Notification-->
@@ -160,8 +210,8 @@
 <script src="../js/other/buildingDeskOrColumnOrTask.js"></script>
 <script src="../js/other/modalDesk.js"></script>
 <script src="../js/desk_page/modalColumn.js"></script>
-<!--<script src="../js/desk_page/createTask.js"></script>-->
 <script src="../js/other/notification.js"></script>
 <script src="../js/desk_page/desk.js"></script>
+<script src="../js/desk_page/modalCreateTask.js"></script>
 <script src="../js/desk_page/modalTask.js"></script>
 </html>

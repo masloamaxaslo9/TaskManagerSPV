@@ -1,24 +1,35 @@
-// Open modal for create task
+function modalTask(task) {
+    console.log(task);
+    let modalElement = document.getElementById('modal-task');
+    let taskTitle = modalElement.querySelector('.modal-title');
+    let taskPriority = modalElement.querySelector('.priority-task > span');
+    let taskDeadline = modalElement.querySelector('.deadline-task > kbd');
+    let taskDescription = modalElement.querySelector('.description-task');
+    modalElement.classList.add('active');
 
-document.getElementById('btn-open-modal-create-task-def').addEventListener('click', openOrCloseModalTask); // Open modal
-document.getElementById('mask-modal-create-task').addEventListener('click', openOrCloseModalTask); // Close modal
-document.querySelector('#modal-create-task > .modal-container > .modal-header > .btn-clear').addEventListener('click', openOrCloseModalTask); // Close modal
-
-function openOrCloseModalTask(event) {
-
-    let target = event.target;
-
-    document.getElementById('modal-create-task').classList.toggle('active');
-    while (target !== this) {
-        if (target.tagName === 'BUTTON') {
-            console.log(target);
-            console.log(target.getAttribute('data-column-id'));
-            setCookie('column_id', target.getAttribute('data-column-id'));
-            return;
+    modalElement.addEventListener('click', closeModal);
+    function closeModal() {
+        if(event.target.hasAttribute('aria-label')) {
+            modalElement.classList.remove('active');
+            //Remove class from priority
+            taskPriority.classList.remove('label-error', 'label-warning', 'label-success');
         }
-        target = target.parentNode;
     }
-}
 
-// Start form require
-document.getElementById('btn-create-task').addEventListener('click', funcCreate);
+    // Task Name
+    taskTitle.innerHTML = task.name;
+
+    // Task Priority
+    taskPriority.innerHTML = task.priority;
+    if(task.priority === 'High') taskPriority.classList.add('label-error');
+    if(task.priority === 'Medium') taskPriority.classList.add('label-warning');
+    if(task.priority === 'Low') taskPriority.classList.add('label-success');
+
+    // Task Select Column
+
+    // Task Deadline
+    taskDeadline.innerHTML = task.task_deadline;
+
+    // Task Description
+    taskDescription.innerHTML = task.description;
+}

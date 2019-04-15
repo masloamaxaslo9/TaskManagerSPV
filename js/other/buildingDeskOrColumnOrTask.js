@@ -6,10 +6,6 @@ let url;
 let closeModule;
 let contentType;
 
-
-
-
-
 function funcCreate(event) {
 
     if(event.target.getAttribute('id') === 'btn-create-desk') { // All variables for Desk.
@@ -43,10 +39,6 @@ function funcCreate(event) {
         };
     }
 
-    console.log(objCreate);
-    console.log(formName);
-    console.log(validator(formName));
-
     if (!validator(formName)) {
         return false;
     } else {
@@ -64,47 +56,32 @@ function funcCreate(event) {
 
 
         request(`http://127.0.0.1:8000${url}`, option, requestCallbackCreate);
+    }
+}
 
-        function requestCallbackCreate(data) {
-            console.log(data);
-            if (data.status !== 201) {
-                console.log(data.status);
-                console.log(data.json());
-            } else {
-                closeModule.classList.remove('active');
+function requestCallbackCreate(data) {
+    console.log(data);
+    if (data.status !== 201) {
+        console.log(data.status);
+        console.log(data.json());
+    } else {
+        closeModule.classList.remove('active');
 
-                data.json()
-                    .then((resolve) => {
-                        return resolve
-                    })
-                    .then((result) => {
-                        if (document.getElementById('section').parentElement.classList.contains('home-page')) {
-                            buildingDesks(result);
-                        } else if (document.getElementById('section').parentElement.classList.contains('desk-page')) {
-                            notification(data.status, result);
+        data.json()
+            .then((resolve) => {
+                return resolve
+            })
+            .then((result) => {
+                if (document.getElementById('section').parentElement.classList.contains('home-page')) {
+                    buildingDesks(result);
+                } else if (document.getElementById('section').parentElement.classList.contains('desk-page')) {
+                    notification(data.status, result);
+                    buildingColumns(result);
+                } else {
+                    console.log('Inner page')
+                }
 
-                            let target = event.target;
-
-                            while (target !== this) {
-                                if (target.tagName === 'BUTTON') {
-                                    console.log(target);
-                                    if (target.id === 'btn-create-column') {
-                                        setCookie('column_id', target.getAttribute('data-column-id'));
-                                        buildingColumns(result);
-                                    } else if(target.id === 'btn-create-task') {
-                                        buildingTasks(result);
-                                    }
-                                    return;
-                                }
-                                target = target.parentNode;
-                            }
-                        } else {
-                            console.log('Inner page')
-                        }
-
-                    })
-            }
-        }
+            })
     }
 }
 

@@ -52,11 +52,12 @@
         }
         // Task
         .task {
+          display: none;
           width: 100%;
-          height: 150px;
+          height: 78px;
           margin-top: 8px;
           border-radius: 5px;
-          display: block;
+          position: relative;
           border: 1px solid #b2b7bc;
           transition: .3s;
           &:hover {
@@ -64,6 +65,24 @@
             //background-color: #b2b7bc;
             text-decoration: none;
             cursor: pointer;
+          }
+          .task-name {
+            margin: 8px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+          }
+          .task-deadline {
+            padding: 5px 10px;
+            position: absolute;
+            top: 8px;
+            right: 8px;
+          }
+          .task-priority {
+            margin: 8px;
+            .label {
+              margin-left: 5px;
+            }
           }
         }
       }
@@ -77,5 +96,43 @@
 #form-create-task {
   input[type='file'] {
     border: .05rem solid #bcc3ce;
+  }
+}
+
+// Modal Task
+#modal-task {
+  .modal-header-task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .priority-task,
+  .column-task,
+  .deadline-task,
+  .description-task {
+    margin: 0;
+  }
+  .description-task {
+    margin-top: 1rem;
+  }
+  .modal-footer {
+    padding: 0;
+    // Form comment
+    #form-create-comment {
+      .modal-body {
+        padding: 0 .8rem;
+      }
+      .form-label {
+        text-align: left;
+      }
+      .form-input {
+        min-width: 100%;
+        min-height: 1.8rem;
+        max-height: 5.5rem;
+      }
+      .modal-footer-submit-comment {
+        margin: .8rem;
+      }
+    }
   }
 }
