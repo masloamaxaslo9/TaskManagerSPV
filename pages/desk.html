@@ -153,7 +153,7 @@
 <!--Modal Task-->
 <div class="modal" id="modal-task">
     <a href="#" class="modal-overlay" aria-label="Close"></a>
-    <div class="modal-container">
+    <div class="modal-container inner-scrollbar">
         <div class="modal-header">
             <a href="#" class="btn btn-clear float-right" aria-label="Close"></a>
             <div class="modal-title h5">Modal title</div>
@@ -173,11 +173,18 @@
                 </div>
                 <div class="content">
                     <p class="description-task">Def</p>
+                    <div class="executor">
+                        Executor:
+                        <div class="chip">
+                            <img src="../images/user-default.png" class="avatar avatar-sm" alt="photo">
+                            <span>Def Def</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="modal-footer">
-            <!--Comments-->
+            <!--Comment Form-->
             <form action="#" method="POST" name="formCreateComment" id="form-create-comment" onsubmit="return false;">
                 <div class="modal-body">
                     <div class="content">
@@ -192,6 +199,21 @@
                     <button type="submit" class="btn btn-primary" id="btn-create-comment">Submit</button>
                 </div>
             </form>
+            <!--Comments-->
+            <div class="comments" id="comments">
+                <blockquote id="lvl-1">
+                    <cite><img src="../images/user-default.png" class="avatar avatar-sm" alt="photo"> <span>Def Def</span></cite>
+                    <p>Def text.</p>
+                    <div class="reply-fields">
+                        <form action="#" name="formReplyCommentNumber">
+                            <label for="input-text-comment-reply">Reply:</label>
+                            <input class="form-input input-sm" type="text" id="input-text-comment-reply" placeholder="Reply">
+                            <button class="btn btn-sm" type="submit">Submit</button>
+                        </form>
+                    </div>
+                    <button class="btn btn-sm btn-link" id="reply-comment-task" onsubmit="return false;">Reply</button>
+                </blockquote>
+            </div>
         </div>
     </div>
 </div>
@@ -214,4 +236,5 @@
 <script src="../js/desk_page/desk.js"></script>
 <script src="../js/desk_page/modalCreateTask.js"></script>
 <script src="../js/desk_page/modalTask.js"></script>
+<script src="../js/desk_page/createComment.js"></script>
 </html>

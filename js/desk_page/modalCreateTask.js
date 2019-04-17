@@ -11,8 +11,6 @@ function openOrCloseModalTask(event) {
     document.getElementById('modal-create-task').classList.toggle('active');
     while (target !== this) {
         if (target.tagName === 'BUTTON') {
-            console.log(target);
-            console.log(target.getAttribute('data-column-id'));
             setCookie('column_id', target.getAttribute('data-column-id'));
             return;
         }

@@ -115,6 +115,26 @@
   .description-task {
     margin-top: 1rem;
   }
+  .executor {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    .chip {
+      margin-left: .5rem;
+    }
+  }
+  .modal-container {
+    overflow: auto;
+    padding: .8rem;
+    border: .5rem solid white;
+    &::-webkit-scrollbar{
+      width: 5px;
+    }
+    .modal-body {
+      min-height: fit-content;
+    }
+  }
+  // All comments
   .modal-footer {
     padding: 0;
     // Form comment
@@ -132,6 +152,41 @@
       }
       .modal-footer-submit-comment {
         margin: .8rem;
+      }
+    }
+    // Comments
+    #comments {
+      text-align: left;
+      margin: 1rem 0;
+      .loading {
+        display: block;
+      }
+      blockquote {
+        display: none;
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 1.5rem;
+        p {
+          margin: .5rem 0;
+        }
+        .btn-link {
+          float: right;
+        }
+        .reply-fields {
+          position: absolute;
+          right: 100%;
+          transition: .3s;
+          transition-timing-function: ease;
+          &.active {
+            right: 30%;
+          }
+          label {
+            display: none;
+          }
+          form {
+            display: flex;
+          }
+        }
       }
     }
   }

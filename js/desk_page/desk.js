@@ -105,6 +105,7 @@ function createColumnsOrColumn(columnsOrColumn) {
             let taskCop = taskDefault.cloneNode(true);
             taskCop.style.display = 'block';
             console.log(columnsOrColumn);
+            taskCop.setAttribute('data-column-id', columnsOrColumn.related_column);
             taskCop.setAttribute('id', `task-${columnsOrColumn.id}`);
             taskCop.querySelector('.task-name').innerHTML = columnsOrColumn.name;
             taskCop.querySelector('.task-deadline').innerHTML = columnsOrColumn.task_deadline;

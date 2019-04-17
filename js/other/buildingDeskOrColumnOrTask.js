@@ -60,7 +60,7 @@ function funcCreate(event) {
 }
 
 function requestCallbackCreate(data) {
-    console.log(data);
+
     if (data.status !== 201) {
         console.log(data.status);
         console.log(data.json());
