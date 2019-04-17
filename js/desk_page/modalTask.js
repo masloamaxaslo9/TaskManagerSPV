@@ -30,7 +30,8 @@ function modalTask(task) {
             let allComents = modalElement.querySelectorAll('blockquote');
             allComents.forEach(function (commentBlock, i) {
                 if (i === 0) return;
-                document.getElementById('comments').removeChild(commentBlock);
+                console.log(commentBlock);
+                //document.getElementById('comments').removeChild(commentBlock);
             })
         }
     }
@@ -114,24 +115,19 @@ function buildingComents(comments) {
             comment.related_comment.forEach(function (comment) {
                 let lvl_Copy_2 = document.getElementById('lvl-1').cloneNode(true);
 
-                console.log(comment);
                 // User Name
                 lvl_Copy_2.querySelector('cite > span').innerHTML = comment.author;
 
                 // Comment text
                 lvl_Copy_2.querySelector('p').innerHTML = comment.comment_body;
 
-                // Reply
-                lvl_Copy.querySelector('.btn-link').id = `btn-create-comment-reply-${comment.id}`;
-
-
-
-
+                // Reply remove
+                lvl_Copy_2.querySelector('.btn-link').remove();
 
                 lvl_Copy_2.id = `lvl-2-${i}`;
                 lvl_Copy_2.style.display = 'block';
+                lvl_Copy_2.style.margin = '2rem 40px 30px 0';
                 lvl_Copy.appendChild(lvl_Copy_2);
-                console.log(comment);
             })
         })
     } else {
@@ -169,15 +165,13 @@ function buildingComents(comments) {
             lvl_Copy.id = `lvl-1-${comments.id}`;
             lvl_Copy.style.display = 'block';
             lvl_Copy.style.margin = '2rem 40px 30px 0';
-            commentsElement.querySelectorAll('blockquote').forEach((blockquote, i) => {
-                console.log(blockquote);
-                console.log(blockquote.getAttribute('data-comment-id'));
+            commentsElement.querySelectorAll('blockquote').forEach((blockquote) => {
                 if (blockquote.getAttribute('data-comment-id') === String(comments.parent)) blockquote.appendChild(lvl_Copy);
             });
 
             // Reply
-            // lvl_Copy.querySelector('.btn-link').id = `btn-create-comment-reply-${comments.id}`;
-            // document.getElementById(`btn-create-comment-reply-${comments.id}`).addEventListener('click', createReplyComment);
+            // Reply remove
+            lvl_Copy.querySelector('.btn-link').remove();
 
             console.log(comments);
             console.log(lvl_Copy);

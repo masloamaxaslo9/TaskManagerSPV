@@ -44,17 +44,23 @@ function createComment(action, obj) {
 function createReplyComment() {
     // Show/Hide Form reply
     this.previousElementSibling.classList.toggle('active');
+    this.classList.add('hide');
 
+    let n = 0;
     this.previousElementSibling.querySelector('button').addEventListener('click', () => {
+        n ++;
+        if(n >= 2) return;
         let objCreate = {
             comment_body: this.previousElementSibling.querySelector('input').value,
             is_child: true,
             parent: this.parentElement.getAttribute('data-comment-id')
         };
         createComment('replyComment', objCreate);
-        console.log(this);
-        console.log(this.previousElementSibling);
         this.previousElementSibling.classList.toggle('active');
+        this.classList.remove('hide');
     });
 
+    console.log(this);
+    console.log(this.previousElementSibling);
+    console.log(this.previousElementSibling.querySelector('button'));
 }

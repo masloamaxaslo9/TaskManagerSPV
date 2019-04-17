@@ -171,6 +171,11 @@
         }
         .btn-link {
           float: right;
+          transition: .3s;
+          &.hide {
+            position: relative;
+            right: -30%;
+          }
         }
         .reply-fields {
           position: absolute;

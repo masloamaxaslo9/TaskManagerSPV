@@ -92,7 +92,8 @@ function createColumnsOrColumn(columnsOrColumn) {
             })
         });
     } else {
-        if(!columnsOrColumn.priority) { // Column
+        console.log(columnsOrColumn);
+        if(columnsOrColumn.related_desk) { // Column
             let columnCop = columnDefault.cloneNode(true);
             columnCop.style.display = 'inline-block';
             columnCop.setAttribute('id', `column-${columnsOrColumn.id}`);
@@ -101,10 +102,9 @@ function createColumnsOrColumn(columnsOrColumn) {
             columnCop.querySelector('.btn-action').setAttribute('data-column-id', columnsOrColumn.id);
             columnCop.querySelector('.btn-action').setAttribute('id', `btn-open-modal-create-task-${columnsOrColumn.id}`);
             document.getElementById('for-append-child').appendChild(columnCop);
-        } else { // Task
+        } else if (columnsOrColumn.related_column) { // Task
             let taskCop = taskDefault.cloneNode(true);
             taskCop.style.display = 'block';
-            console.log(columnsOrColumn);
             taskCop.setAttribute('data-column-id', columnsOrColumn.related_column);
             taskCop.setAttribute('id', `task-${columnsOrColumn.id}`);
             taskCop.querySelector('.task-name').innerHTML = columnsOrColumn.name;
