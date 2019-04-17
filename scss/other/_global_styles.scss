@@ -18,6 +18,7 @@ hr {
 
 #notification {
   position: fixed;
+  z-index: 1000;
   width: auto;
   right: -300px;
   top: 120px;

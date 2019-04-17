@@ -9,6 +9,6 @@ function request(url, option, requestCallback) {
             requestCallback(data); // temporarily !!!
         })
         .catch(function (error) {
-            console.log(error);
+            console.log(error.message);
         });
 }

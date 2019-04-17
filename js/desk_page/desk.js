@@ -76,7 +76,7 @@ function createColumnsOrColumn(columnsOrColumn) {
                 let taskCop = taskDefault.cloneNode(true);
                 taskCop.style.display = 'block';
                 taskCop.setAttribute('data-column-id', column.id);
-                taskCop.setAttribute('id', `task-${i}`);
+                taskCop.setAttribute('id', `task-${task.id}`);
                 taskCop.querySelector('.task-name').innerHTML = task.name;
                 taskCop.querySelector('.task-deadline').innerHTML = task.task_deadline;
                 // Priority colors
@@ -92,7 +92,6 @@ function createColumnsOrColumn(columnsOrColumn) {
             })
         });
     } else {
-        console.log(columnsOrColumn);
         if(columnsOrColumn.related_desk) { // Column
             let columnCop = columnDefault.cloneNode(true);
             columnCop.style.display = 'inline-block';
@@ -135,4 +134,12 @@ function selectUsers(users) {
         optionElement.value = user.user_id;
         inputPriority.appendChild(optionElement);
     });
+}
+
+// Change column for task
+
+function changeColumnForTask(task, taskInnerColumn) {
+    let newColumnForTask = document.getElementById(`column-${taskInnerColumn.related_column}`);
+    let numberForInsert = newColumnForTask.children.length - 1;
+    newColumnForTask.insertBefore(document.getElementById(`task-${task.id}`), newColumnForTask.children[numberForInsert])
 }

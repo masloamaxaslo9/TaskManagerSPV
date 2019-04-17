@@ -59,8 +59,4 @@ function createReplyComment() {
         this.previousElementSibling.classList.toggle('active');
         this.classList.remove('hide');
     });
-
-    console.log(this);
-    console.log(this.previousElementSibling);
-    console.log(this.previousElementSibling.querySelector('button'));
 }

@@ -1,6 +1,6 @@
-function notification(status, result) {
+function notification(status) {
     let elementNotification = document.getElementById('notification');
-    if(status === 201) {
+    if(status === 201 || status === 200) {
         elementNotification.classList.toggle('active');
     }
     setTimeout(deleteNotification, 5000, elementNotification);

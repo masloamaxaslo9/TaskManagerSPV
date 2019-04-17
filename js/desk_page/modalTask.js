@@ -14,6 +14,7 @@ function modalTask(task) {
     let modalElement = document.getElementById('modal-task');
     let taskTitle = modalElement.querySelector('.modal-title');
     let taskPriority = modalElement.querySelector('.priority-task > span');
+    let taskColumn = modalElement.querySelector('.column-task > select');
     let taskDeadline = modalElement.querySelector('.deadline-task > kbd');
     let taskDescription = modalElement.querySelector('.description-task');
     let taskExecutor = modalElement.querySelector('.executor span');
@@ -27,12 +28,22 @@ function modalTask(task) {
             taskPriority.classList.remove('label-error', 'label-warning', 'label-success');
 
             // Remove Comments
-            let allComents = modalElement.querySelectorAll('blockquote');
-            allComents.forEach(function (commentBlock, i) {
-                if (i === 0) return;
-                console.log(commentBlock);
-                //document.getElementById('comments').removeChild(commentBlock);
-            })
+            let allComments = modalElement.querySelectorAll('blockquote');
+            let arrayAllComment = Array.from(allComments);
+
+            arrayAllComment = arrayAllComment.filter((comment) => {
+                if(comment.getAttribute('data-lvl-comment') === '1') return comment;
+            });
+            
+            arrayAllComment.forEach(function (commentBlock) {
+                document.getElementById('comments').removeChild(commentBlock);
+            });
+
+            // Remove select list column
+            let allSelectOptionsColumn = taskColumn.querySelectorAll('option');
+            allSelectOptionsColumn.forEach((option) => {
+                option.remove();
+            });
         }
     }
 
@@ -45,8 +56,51 @@ function modalTask(task) {
     if(task.priority === 'Medium') taskPriority.classList.add('label-warning');
     if(task.priority === 'Low') taskPriority.classList.add('label-success');
 
+    // Change column for task
+    taskColumn.onchange = function () {
+        let selectedIndex = taskColumn.options.selectedIndex;
+        let selectedValue = taskColumn.options[selectedIndex].value;
+
+        let objCreate = {
+            related_column: selectedValue
+        };
+
+        let csrftoken = getCookie('csrftoken');
+        let option = {
+            method: 'PATCH',
+            headers: {
+                'X-CSRFToken': csrftoken,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+            body: JSON.stringify(objCreate)
+        };
+
+        request(`http://127.0.0.1:8000/api-desks/${getCookie('desk_id')}/columns/${getCookie('column_id')}/tasks/${getCookie('task_id')}/`, option, requireCallBackChangeColumn);
+
+        function requireCallBackChangeColumn(result) {
+            notification(result.status);
+            result.json()
+                .then((resolve) => {
+                    return resolve
+                })
+                .then((taskInnerColumn) => {
+                    if (result.status === 200) changeColumnForTask(task, taskInnerColumn);
+                })
+        }
+
+    };
+
     // Task Select Column
-    // ...
+    task.columns.forEach(function (column) {
+        let option;
+        option = new Option(column.name, column.id);
+        if(column.id === task.related_column) {
+            option = new Option(column.name, column.id, true, true);
+        }
+        taskColumn.appendChild(option);
+    });
 
     // Task Deadline
     taskDeadline.innerHTML = task.task_deadline;
@@ -102,6 +156,9 @@ function buildingComents(comments) {
             // Comment ID
             lvl_Copy.setAttribute('data-comment-id', comment.id);
 
+            // Comment lvl
+            lvl_Copy.setAttribute('data-lvl-comment', 1);
+
             // Append element
             lvl_Copy.id = `lvl-1-${i}`;
             lvl_Copy.style.display = 'block';
@@ -120,6 +177,9 @@ function buildingComents(comments) {
 
                 // Comment text
                 lvl_Copy_2.querySelector('p').innerHTML = comment.comment_body;
+
+                // Comment lvl
+                lvl_Copy_2.setAttribute('data-lvl-comment', 2);
 
                 // Reply remove
                 lvl_Copy_2.querySelector('.btn-link').remove();
@@ -143,6 +203,9 @@ function buildingComents(comments) {
             // Comment ID
             lvl_Copy.setAttribute('data-comment-id', comments.id);
 
+            // Comment lvl
+            lvl_Copy.setAttribute('data-lvl-comment', 1);
+
             // Append element
             lvl_Copy.id = `lvl-1-${comments.id}`;
             lvl_Copy.style.display = 'block';
@@ -161,6 +224,9 @@ function buildingComents(comments) {
             // Comment ID
             lvl_Copy.setAttribute('data-comment-id', comments.id);
 
+            // Comment lvl
+            lvl_Copy.setAttribute('data-lvl-comment', 2);
+
             // Append element
             lvl_Copy.id = `lvl-1-${comments.id}`;
             lvl_Copy.style.display = 'block';
@@ -172,9 +238,7 @@ function buildingComents(comments) {
             // Reply
             // Reply remove
             lvl_Copy.querySelector('.btn-link').remove();
-
-            console.log(comments);
-            console.log(lvl_Copy);
+            
         }
 
 
