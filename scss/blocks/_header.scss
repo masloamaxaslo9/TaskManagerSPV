@@ -17,10 +17,23 @@
       line-height: 100px;
     }
   }
+  .menu-drop,
   .create-desk {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  #log-out-account {
+    img {
+      margin-right: 5px;
+    }
+    i {
+      margin-left: 5px;
+    }
+    &:hover {
+      cursor: pointer;
+      text-decoration: none;
+    }
   }
 
 }

@@ -19,9 +19,37 @@
     <header class="header container grid-xl">
         <div class="columns">
             <a href="homePage.html" class="logo column col-2 col-md-2 col-sm-2"><img src="../images/icon.png" alt="photo"></a>
-            <div class="name column col-6 col-md-4 hide-sm"><h3 id="title-page"></h3></div>
-            <div class="create-desk column col-2 col-md-2 col-sm-4 col-xs-10 col-ml-auto"><button class="btn btn-lg" id="btn-open-modal-create-column">Create Column</button></div>
-            <div class="create-desk column col-2 col-md-2 col-sm-4 hide-xs col-ml-auto"><button class="btn btn-lg" id="btn-open-modal-create-desk">Create Desk</button></div>
+            <div class="name column col-4 col-md-4 hide-sm"><h3 id="title-page"></h3></div>
+            <!---->
+            <div class="dropdown menu-drop col-ml-auto col-sm-6">
+                <a href="#" class="btn btn-lg dropdown-toggle" tabindex="0">
+                    Menu <i class="icon icon-apps"></i>
+                </a>
+                <!-- menu component -->
+                <ul class="menu">
+                    <li class="menu-item">
+                        <a href="#" class="btn btn-lg btn-link" id="btn-open-modal-create-desk">
+                            <i class="icon icon-bookmark"></i> Create Desk
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="btn btn-lg btn-link" id="btn-open-modal-create-column">
+                            <i class="icon icon-plus"></i> Create Column
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="btn btn-lg btn-link" id="btn-open-modal-add-user">
+                            <i class="icon icon-emoji"></i> Add User
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!--Log Out-->
+            <a class="menu-drop col-2 col-md-3 col-sm-4" id="log-out-account">
+                <img src="../images/user-default.png" class="avatar avatar-lg" alt="photo">
+                Log out <i class="icon icon-forward"></i>
+            </a>
+            <!---->
         </div>
     </header>
     <hr>
@@ -214,6 +242,8 @@
         </div>
     </div>
 </div>
+<!--Modal add User For Desk-->
+
 <!--Notification-->
 <div class="toast toast-success" id="notification">
     <button class="btn btn-clear float-right"></button>
@@ -234,4 +264,5 @@
 <script src="../js/desk_page/modalCreateTask.js"></script>
 <script src="../js/desk_page/modalTask.js"></script>
 <script src="../js/desk_page/createComment.js"></script>
+<script src="../js/desk_page/addUserOnDesk.js"></script>
 </html>
