@@ -186,6 +186,14 @@ function validator(formName) {
             return false;
         }
 
+        // Deadline
+        let arrYearMonthDay = task_deadline.value.split('-');
+        let arrNormalYearMonthDay = new Date().toDateInputValue().split('-');
+        let counter = 0;
+        arrYearMonthDay.forEach((item, i) => {
+            if (i === counter) item < arrNormalYearMonthDay[i] ? task_deadline.parentElement.classList.add('has-error') : counter++;
+        });
+
         return true;
 
     }
