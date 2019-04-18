@@ -19,7 +19,7 @@
     <header class="header container grid-xl">
         <div class="columns">
             <a href="homePage.html" class="logo column col-2 col-md-2 col-sm-2"><img src="../images/icon.png" alt="photo"></a>
-            <div class="name column col-6 col-md-4 hide-sm"><h3>Task Manager</h3></div>
+            <div class="name column col-6 col-md-4 hide-sm"><h3 id="title-page"></h3></div>
             <div class="create-desk column col-2 col-md-2 col-sm-4 col-xs-10 col-ml-auto"><button class="btn btn-lg" id="btn-open-modal-create-column">Create Column</button></div>
             <div class="create-desk column col-2 col-md-2 col-sm-4 hide-xs col-ml-auto"><button class="btn btn-lg" id="btn-open-modal-create-desk">Create Desk</button></div>
         </div>
@@ -181,12 +181,13 @@
         </div>
         <div class="modal-footer">
             <!--Comment Form-->
-            <form action="#" method="POST" name="formCreateComment" id="form-create-comment" onsubmit="return false;">
+            <form action="#" method="POST" name="createComment" id="form-create-comment" onsubmit="return false;">
                 <div class="modal-body">
                     <div class="content">
                         <div class="form-group">
                             <label class="form-label" for="input-task-comment">Comment</label>
                             <textarea class="form-input" id="input-task-comment" placeholder="Comments" rows="3"></textarea>
+                            <p class="form-input-hint">Comment is not correct</p>
                         </div>
                     </div>
                 </div>
@@ -201,7 +202,7 @@
                     <cite><img src="../images/user-default.png" class="avatar avatar-sm" alt="photo"> <span>Def Def</span></cite>
                     <p>Def text.</p>
                     <div class="reply-fields">
-                        <form action="#" name="formReplyCommentNumber">
+                        <form action="#" name="replyComment">
                             <label for="input-text-comment-reply">Reply:</label>
                             <input class="form-input input-sm" type="text" id="input-text-comment-reply" placeholder="Reply">
                             <button class="btn btn-sm" type="submit">Submit</button>

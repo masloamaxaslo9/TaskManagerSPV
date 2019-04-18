@@ -37,8 +37,9 @@ function loadColumnsAndTask() {
             result
                 .then((resolve) => {
                     console.log(resolve);
-                    buildingColumns(resolve.columns);              //// FOR CREATE COLUMNS AND TASKS
-                    selectUsers(resolve.users);                    //// FOR INNER SELECT WHEN CREATE TASK
+                    buildingColumns(resolve.columns);              //// CREATE COLUMNS AND TASKS
+                    selectUsers(resolve.users);                    //// INNER SELECT WHEN CREATE TASK
+                    innerTitleForPage(resolve.name);               //// INNER TEXT TITLE FOR THIS PAGE
                 })
         }
     }
@@ -134,6 +135,12 @@ function selectUsers(users) {
         optionElement.value = user.user_id;
         inputPriority.appendChild(optionElement);
     });
+}
+
+// Inner title for page
+
+function innerTitleForPage(namePage) {
+    document.getElementById('title-page').innerHTML = namePage;
 }
 
 // Change column for task

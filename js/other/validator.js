@@ -12,6 +12,10 @@ function validator(formName) {
         return createColumnValidator();
     } else if (formName === 'formCreateTask') {
         return createTaskValidator();
+    } else if (formName === 'createComment') {
+        return createCommentValidator();
+    } else if (formName === 'replyComment') {
+        return createReplyValidator();
     }
 
     // Login validation
@@ -190,11 +194,38 @@ function validator(formName) {
         let arrYearMonthDay = task_deadline.value.split('-');
         let arrNormalYearMonthDay = new Date().toDateInputValue().split('-');
         let counter = 0;
-        arrYearMonthDay.forEach((item, i) => {
+        let result = arrYearMonthDay.map((item, i) => {
             if (i === counter) item < arrNormalYearMonthDay[i] ? task_deadline.parentElement.classList.add('has-error') : counter++;
+            if (task_deadline.parentElement.classList.contains('has-error')) return false;
         });
+
+        for (let i = 0; i <= result.length; i++) if (result[i] === false) return false;
 
         return true;
 
+    }
+
+    // Create Comment
+    function createCommentValidator() {
+        let inputComment = document.getElementById('input-task-comment');
+        inputComment.parentElement.classList.remove('has-error');
+        console.log(inputComment.value);
+        if(inputComment.value === '' || inputComment.value.length > 500) {
+            inputComment.parentElement.classList.add('has-error');
+            return false;
+        }
+
+        return true;
+
+    }
+
+    // Create Reply for comment
+    function createReplyValidator() {
+        let inputReply = document.getElementById('active-reply').querySelector('input');
+        if (inputReply.value === '') {
+            return false
+        } else {
+            return true;
+        }
     }
 }

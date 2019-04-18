@@ -25,6 +25,9 @@ function createComment(action, obj) {
         credentials: 'include',
         body: JSON.stringify(objCreate)
     };
+
+    if (!validator(action)) return false;
+
     request(`http://127.0.0.1:8000/api-desks/${getCookie('desk_id')}/columns/${getCookie('column_id')}/tasks/${getCookie('task_id')}/comments/create/`, option, callBackCommentsCreate);
 
     function callBackCommentsCreate(result) {
@@ -34,7 +37,7 @@ function createComment(action, obj) {
             })
             .then((result) => {
                 buildingComents(result);
-                document.forms.formCreateComment.reset();
+                document.forms.createComment.reset();
             })
     }
 }
@@ -44,6 +47,7 @@ function createComment(action, obj) {
 function createReplyComment() {
     // Show/Hide Form reply
     this.previousElementSibling.classList.toggle('active');
+    this.previousElementSibling.querySelector('form').setAttribute('id', 'active-reply');
     this.classList.add('hide');
 
     let n = 0;
@@ -55,8 +59,10 @@ function createReplyComment() {
             is_child: true,
             parent: this.parentElement.getAttribute('data-comment-id')
         };
+        console.log(objCreate);
         createComment('replyComment', objCreate);
         this.previousElementSibling.classList.toggle('active');
         this.classList.remove('hide');
+        this.previousElementSibling.querySelector('form').removeAttribute('id');
     });
 }

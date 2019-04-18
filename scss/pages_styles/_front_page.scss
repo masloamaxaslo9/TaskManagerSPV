@@ -1,8 +1,10 @@
 .home-page {
   overflow: hidden;
   .section {
-    overflow: auto;
     .table {
+      &:nth-last-child(2) {
+        margin-bottom: 1rem;
+      }
       margin: 15px auto 0;
       height: 115px;
       justify-content: center;
@@ -46,7 +48,8 @@
 // Modal: for display error
 #form-create-desk,
 #form-create-column,
-#form-create-task {
+#form-create-task,
+#form-create-comment {
   .form-group {
     .form-input-hint {
       display: none;
@@ -56,6 +59,7 @@
       .form-input-hint {
         display: block;
       }
+      display: block;
     }
   }
 }

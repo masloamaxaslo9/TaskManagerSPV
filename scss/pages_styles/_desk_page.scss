@@ -1,5 +1,10 @@
 .desk-page {
   overflow: hidden;
+  #title-page {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
   #not-found-columns {
     text-align: center;
     margin: 2rem 0;

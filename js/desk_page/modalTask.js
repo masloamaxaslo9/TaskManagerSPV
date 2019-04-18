@@ -44,6 +44,9 @@ function modalTask(task) {
             allSelectOptionsColumn.forEach((option) => {
                 option.remove();
             });
+
+            // Remove has-error
+            document.getElementById('input-task-comment').parentElement.classList.remove('has-error');
         }
     }
 
