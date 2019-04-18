@@ -16,6 +16,8 @@ function validator(formName) {
         return createCommentValidator();
     } else if (formName === 'replyComment') {
         return createReplyValidator();
+    } else if (formName === 'modalAddUser') {
+        return addUserOnDeskValidator();
     }
 
     // Login validation
@@ -227,5 +229,17 @@ function validator(formName) {
         } else {
             return true;
         }
+    }
+    
+    //
+    function addUserOnDeskValidator() {
+        let inputEmailUser = document.getElementById('input-email-form-add-user');
+
+        // Email
+        if (inputEmailUser.value.match(/^[0-9a-z-\.]+\@[0-9a-z-]{2,}\.[a-z]{2,}$/i) === null) {
+            inputEmailUser.parentElement.classList.add('has-error');
+            return false;
+        }
+        return true;
     }
 }

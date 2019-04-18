@@ -45,7 +45,7 @@
                 </ul>
             </div>
             <!--Log Out-->
-            <a class="menu-drop col-2 col-md-3 col-sm-4" id="log-out-account">
+            <a href="../index.html" class="menu-drop col-2 col-md-3 col-sm-4" id="log-out-account">
                 <img src="../images/user-default.png" class="avatar avatar-lg" alt="photo">
                 Log out <i class="icon icon-forward"></i>
             </a>
@@ -243,7 +243,39 @@
     </div>
 </div>
 <!--Modal add User For Desk-->
-
+<div class="modal modal-sm" id="modal-add-user">
+    <a href="#" class="modal-overlay" id="mask-modal-add-user" aria-label="Close"></a>
+    <div class="modal-container">
+        <div class="modal-header">
+            <a href="#" class="btn btn-clear float-right" aria-label="Close"></a>
+            <div class="modal-title h5">Add User</div>
+        </div>
+        <form action="#" name="modalAddUser" id="form-add-user">
+            <div class="modal-body">
+                <div class="content">
+                    <div class="form-group">
+                        <label class="form-label" for="input-email-form-add-user">E-mail:</label>
+                        <input class="form-input" type="email" id="input-email-form-add-user" placeholder="email" required>
+                        <p class="form-input-hint">The E-mail is invalid.</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-permission">Permission:</label>
+                        <select class="form-select" id="user-permission" required>
+                            <option>Staff</option>
+                            <option>Editor</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="modal-footer">
+                    <button type="reset" class="btn" id="btn-reset-add-user">Reset</button>
+                    <button type="submit" class="btn btn-primary" id="btn-add-user">Create</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 <!--Notification-->
 <div class="toast toast-success" id="notification">
     <button class="btn btn-clear float-right"></button>
@@ -265,4 +297,5 @@
 <script src="../js/desk_page/modalTask.js"></script>
 <script src="../js/desk_page/createComment.js"></script>
 <script src="../js/desk_page/addUserOnDesk.js"></script>
+<script src="../js/other/logOut.js"></script>
 </html>

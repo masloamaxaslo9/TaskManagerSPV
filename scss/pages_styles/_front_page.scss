@@ -1,5 +1,10 @@
 .home-page {
   overflow: hidden;
+  #title-page {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
   .section {
     .table {
       &:nth-last-child(2) {
@@ -45,23 +50,6 @@
     }
   }
 }
-// Modal: for display error
-#form-create-desk,
-#form-create-column,
-#form-create-task,
-#form-create-comment {
-  .form-group {
-    .form-input-hint {
-      display: none;
-      margin-bottom: 0;
-    }
-    &.has-error {
-      .form-input-hint {
-        display: block;
-      }
-      display: block;
-    }
-  }
-}
+
 
 

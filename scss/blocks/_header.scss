@@ -11,6 +11,7 @@
     }
   }
   .name {
+    height: 100px;
     h3 {
       margin: 0;
       text-align: center;
@@ -19,6 +20,7 @@
   }
   .menu-drop,
   .create-desk {
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
