@@ -59,7 +59,6 @@ function createReplyComment() {
             is_child: true,
             parent: this.parentElement.getAttribute('data-comment-id')
         };
-        console.log(objCreate);
         createComment('replyComment', objCreate);
         this.previousElementSibling.classList.toggle('active');
         this.classList.remove('hide');

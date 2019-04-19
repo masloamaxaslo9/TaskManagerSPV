@@ -6,6 +6,7 @@
     overflow: hidden;
   }
   .section {
+    overflow: auto;
     .table {
       &:nth-last-child(2) {
         margin-bottom: 1rem;

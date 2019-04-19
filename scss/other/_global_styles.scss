@@ -27,6 +27,12 @@ hr {
     right: 15px;
     top: 120px;
   }
+  &.active-error {
+    right: 15px;
+    top: 120px;
+    background-color: #cc0000;
+    border: 1px solid #cc0000;
+  }
 }
 
 // Scroll style

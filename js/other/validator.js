@@ -211,7 +211,6 @@ function validator(formName) {
     function createCommentValidator() {
         let inputComment = document.getElementById('input-task-comment');
         inputComment.parentElement.classList.remove('has-error');
-        console.log(inputComment.value);
         if(inputComment.value === '' || inputComment.value.length > 500) {
             inputComment.parentElement.classList.add('has-error');
             return false;

@@ -1,7 +1,5 @@
 function modalTask(task) {
-    console.log(task);
     setCookie('task_id', task.id);
-    console.log('=====================');
     let target = event.target;
     while (target !== document.querySelector('.task')) {
         if (target.tagName === 'DIV') {
@@ -89,7 +87,7 @@ function modalTask(task) {
                     return resolve
                 })
                 .then((taskInnerColumn) => {
-                    if (result.status === 200) changeColumnForTask(task, taskInnerColumn);
+                    if (result.status === 200) changeColumnForTask(task, taskInnerColumn, selectedValue);
                 })
         }
 
@@ -243,7 +241,5 @@ function buildingComents(comments) {
             lvl_Copy.querySelector('.btn-link').remove();
             
         }
-
-
     }
 }

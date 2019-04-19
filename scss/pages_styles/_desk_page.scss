@@ -110,6 +110,15 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media screen and (max-width: 600px) {
+      flex-wrap: wrap;
+      margin-left: -.4rem;
+      margin-right: -.4rem;
+      p {
+        margin: 1rem 0;
+        text-align: center;
+      }
+    }
   }
   .priority-task,
   .column-task,

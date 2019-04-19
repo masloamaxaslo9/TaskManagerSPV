@@ -38,6 +38,11 @@
                         </a>
                     </li>
                     <li class="menu-item">
+                        <a href="#" class="btn btn-lg btn-link" id="btn-open-modal-delete-desk">
+                            <i class="icon icon-cross"></i> Delete Desk
+                        </a>
+                    </li>
+                    <li class="menu-item">
                         <a href="#" class="btn btn-lg btn-link" id="btn-open-modal-add-user">
                             <i class="icon icon-emoji"></i> Add User
                         </a>
@@ -189,11 +194,11 @@
         <div class="modal-body">
             <div class="content">
                 <div class="modal-header-task">
-                    <p class="priority-task">Priority: <span class="label">def</span></p>
-                    <label class="column-task">
+                    <p class="priority-task col-sm-12 col-mr-auto">Priority: <span class="label">def</span></p>
+                    <label class="column-task col-sm-12 col-mr-auto">
                         <select class="form-select" id="for-change-column-for-task"></select>
                     </label>
-                    <p class="deadline-task">Deadline: <kbd class="h6">def</kbd></p>
+                    <p class="deadline-task col-sm-12 col-mr-auto">Deadline: <kbd class="h6">def</kbd></p>
                 </div>
                 <div class="content">
                     <p class="description-task">Def</p>
@@ -276,6 +281,25 @@
         </form>
     </div>
 </div>
+<!--Modal Delete Desk-->
+<div class="modal" id="modal-delete-desk">
+    <a href="#" class="modal-overlay" aria-label="Close" id="mask-modal-delete-desk"></a>
+    <div class="modal-container">
+        <div class="modal-header">
+            <a href="#" class="btn btn-clear float-right" aria-label="Close"></a>
+            <div class="modal-title h5">Delete Desk</div>
+        </div>
+        <div class="modal-body">
+            <div class="content">
+                <p>Are you sure you want to remove the board ?</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" id="btn-delete-desk-no">Not</button>
+            <button type="submit" class="btn btn-primary" id="btn-delete-desk-yes">Yes</button>
+        </div>
+    </div>
+</div>
 <!--Notification-->
 <div class="toast toast-success" id="notification">
     <button class="btn btn-clear float-right"></button>
@@ -298,4 +322,5 @@
 <script src="../js/desk_page/createComment.js"></script>
 <script src="../js/desk_page/addUserOnDesk.js"></script>
 <script src="../js/other/logOut.js"></script>
+<script src="../js/desk_page/deleteDesk.js"></script>
 </html>

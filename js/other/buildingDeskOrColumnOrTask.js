@@ -63,7 +63,7 @@ function requestCallbackCreate(data) {
 
     if (data.status !== 201) {
         console.log(data.status);
-        console.log(data.json());
+        if (data.status === 403) notification(data.status)
     } else {
         closeModule.classList.remove('active');
 
