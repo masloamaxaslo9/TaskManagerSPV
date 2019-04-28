@@ -37,7 +37,7 @@ function getDataLogin(event) {
               Accept: 'application/json',
               'Content-Type': 'application/json',
           },
-          credentials: 'include',
+          credentials: 'same-origin',
           body: JSON.stringify(userLogin)
       };
 
@@ -91,7 +91,7 @@ function getDataRegister(event) {
           body: JSON.stringify(userRegister)
       };
 
-      requireAuth('http://127.0.0.1:8000/api-users/register/', option, requireAuthCallbackRegister);
+      requireAuth('https://evening-inlet-45238.herokuapp.com/api-users/register/', option, requireAuthCallbackRegister);
 
       function requireAuthCallbackRegister(data) {
 
