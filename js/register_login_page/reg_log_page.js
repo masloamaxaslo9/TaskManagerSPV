@@ -62,8 +62,8 @@ function getDataLogin(event) {
            document.cookie = `last_name=${ res.data.last_name }`;
            document.cookie = `user_id=${ res.data.user_id }`;
            document.cookie = `email=${ res.data.email }`;
-           document.cookie = `sessionid=${ res.data.sessionid }`;
-           document.cookie = `csrftoken=${ res.data.csrftoken }`;
+           //document.cookie = `sessionid=${ res.data.sessionid }`;
+           //document.cookie = `csrftoken=${ res.data.csrftoken }`;
            });
               document.forms.loginForm.submit();
           }
