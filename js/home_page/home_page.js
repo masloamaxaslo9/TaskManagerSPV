@@ -1,11 +1,11 @@
 // Require for Load Desk
 
 function loadDesk() {
-    let csrftoken = getCookie('csrftoken');
+    let csrftoken = getCookie('sessionid');
     let option = {
         method: 'GET',
         headers: {
-            'X-CSRFToken': csrftoken,
+            'sessionid': csrftoken,
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
