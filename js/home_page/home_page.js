@@ -2,12 +2,12 @@
 
 function loadDesk() {
     let sessionid = getCookie('sessionid');
-    let csrf = getCookie('csrftoken');
+    //let csrf = getCookie('csrftoken');
     let option = {
         method: 'GET',
         headers: {
             'sessionid': sessionid,
-            'csrftoken': csrftoken,
+            //'csrftoken': csrftoken,
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
