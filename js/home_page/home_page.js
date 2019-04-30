@@ -12,7 +12,7 @@ function loadDesk() {
         credentials: 'include'
     };
 
-    request('http://127.0.0.1:8000/api-desks/', option, requestCallbackloadDesk);
+    request('https://evening-inlet-45238.herokuapp.com/api-desks/', option, requestCallbackloadDesk);
 
     function requestCallbackloadDesk(data) {
         if (data.status !== 200) {
