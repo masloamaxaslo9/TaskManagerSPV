@@ -2,7 +2,7 @@
 
 function loadDesk() {
     let sessionid = getCookie('sessionid');
-    let csrf = getCookie('csrfroken');
+    let csrf = getCookie('csrftoken');
     let option = {
         method: 'GET',
         headers: {
