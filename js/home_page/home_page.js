@@ -1,15 +1,17 @@
 // Require for Load Desk
 
 function loadDesk() {
-    let csrftoken = getCookie('sessionid');
+    let sessionid = getCookie('sessionid');
+    let csrf = getCookie('csrfroken');
     let option = {
         method: 'GET',
         headers: {
-            'sessionid': csrftoken,
+            'sessionid': sessionid,
+            'csrftoken': csrftoken,
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        credentials: 'include'
+        credentials: 'same-origin'
     };
 
     request('https://evening-inlet-45238.herokuapp.com/api-desks/', option, requestCallbackloadDesk);
