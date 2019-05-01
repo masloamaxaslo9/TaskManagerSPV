@@ -57,15 +57,14 @@ function getDataLogin(event) {
             })
               ).then(res => {
            console.log(res.data);
-           document.cookie = `username=${ res.data.username }`;
-           document.cookie = `first_name=${ res.data.first_name }`;
-           document.cookie = `last_name=${ res.data.last_name }`;
-           document.cookie = `user_id=${ res.data.user_id }`;
-           document.cookie = `email=${ res.data.email }`;
-           document.cookie = `sessionid=${ res.data.sessionid }`;
-           //document.cookie = `csrftoken=${ res.data.csrftoken }`;
+           setCookie('username', res.data.username);
+           setCookie('first_name', res.data.first_name);
+           setCookie('last_name', res.data.last_name);
+           setCookie('user_id', res.data.user_id);
+           setCookie('email', res.data.email);
+           setCookie('sessionid', res.data.sessionid);
            });
-              document.forms.loginForm.submit();
+            document.forms.loginForm.submit();
           }
       }
   }
@@ -111,6 +110,7 @@ function getDataRegister(event) {
       function requireAuthCallbackRegister(data) {
 
           if (data.status !== 201) {
+              alert('собака');
               let forTextError = data.json();
               forTextError
                   .then((result) => {
@@ -121,7 +121,24 @@ function getDataRegister(event) {
                           document.getElementById('error').innerText = result.email;
                       }
                   })
+
           } else {
+              alert('собака 1');
+              let response = data;
+              response.json()
+                  .then(data => ({
+                      data: data,
+                      status: response.status
+                  }))
+                  .then(res => {
+                  console.log(res.data);
+                  setCookie('username', res.data.username);
+                  setCookie('first_name', res.data.first_name);
+                  setCookie('last_name', res.data.last_name);
+                  setCookie('user_id', res.data.user_id);
+                  setCookie('email', res.data.email);
+                  setCookie('sessionid', res.data.sessionid);
+              });
               document.forms.registerForm.submit();
           }
       }

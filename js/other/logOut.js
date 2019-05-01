@@ -22,7 +22,7 @@ function logOut() {
         credentials: 'include'
     };
 
-    request(`http://127.0.0.1:8000/api-users/logout/`, option, callBackLogOut);
+    request(`https://evening-inlet-45238.herokuapp.com/api-users/logout/`, option, callBackLogOut);
 
     function callBackLogOut(result) {
         console.log(result);

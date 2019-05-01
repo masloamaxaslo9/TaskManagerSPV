@@ -30,7 +30,7 @@ function deleteDesk(event) {
         };
 
 
-        request(`http://127.0.0.1:8000/api-desks/${getCookie('desk_id')}/`, option, requestCallbackDeleteDesk);
+        request(`https://evening-inlet-45238.herokuapp.com/api-desks/${getCookie('desk_id')}/`, option, requestCallbackDeleteDesk);
 
         function requestCallbackDeleteDesk(result) {
             if (result.status === 204) window.location.replace(window.location.origin + '/pages/homePage.html');

@@ -21,7 +21,6 @@ function loadDesk() {
             console.log(data.status);
             console.log(data);
         } else {
-            console.log("Hello from Github!")
             let result = data.json();
             result
                 .then((resolve) => {

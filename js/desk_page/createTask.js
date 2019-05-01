@@ -22,7 +22,7 @@ function createTask(obj, formName, url) {
 // Тело запроса готово, отправляем
 
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', `http://127.0.0.1:8000${url}`, false);
+    xhr.open('POST', `https://evening-inlet-45238.herokuapp.com${url}`, false);
 
     xhr.setRequestHeader('Content-Type', 'multipart/form-data; boundary=' + boundary);
     xhr.setRequestHeader('Cookie', document.cookie);

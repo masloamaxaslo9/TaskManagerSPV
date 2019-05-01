@@ -78,7 +78,7 @@ function modalTask(task) {
             body: JSON.stringify(objCreate)
         };
 
-        request(`http://127.0.0.1:8000/api-desks/${getCookie('desk_id')}/columns/${getCookie('column_id')}/tasks/${getCookie('task_id')}/`, option, requireCallBackChangeColumn);
+        request(`https://evening-inlet-45238.herokuapp.com/api-desks/${getCookie('desk_id')}/columns/${getCookie('column_id')}/tasks/${getCookie('task_id')}/`, option, requireCallBackChangeColumn);
 
         function requireCallBackChangeColumn(result) {
             notification(result.status);
@@ -127,7 +127,7 @@ function modalTask(task) {
         },
         credentials: 'include'
     };
-    request(`http://127.0.0.1:8000/api-desks/${getCookie('desk_id')}/columns/${getCookie('column_id')}/tasks/${task.id}/comments/`, option, callBackCommentsList);
+    request(`https://evening-inlet-45238.herokuapp.com/api-desks/${getCookie('desk_id')}/columns/${getCookie('column_id')}/tasks/${task.id}/comments/`, option, callBackCommentsList);
 
     function callBackCommentsList(result) {
         result.json()

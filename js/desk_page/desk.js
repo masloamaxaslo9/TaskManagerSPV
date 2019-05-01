@@ -26,7 +26,7 @@ function loadColumnsAndTask() {
         credentials: 'include'
     };
     let url = `/api-desks/${getCookie('desk_id')}/`;
-    request(`http://127.0.0.1:8000${url}`, option, requestCallbackloadColumn);
+    request(`https://evening-inlet-45238.herokuapp.com${url}`, option, requestCallbackloadColumn);
 
     function requestCallbackloadColumn(data) {
         if (data.status !== 200) {
