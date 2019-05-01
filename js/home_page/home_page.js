@@ -11,7 +11,7 @@ function loadDesk() {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        credentials: 'same-origin'
+        credentials: 'include'
     };
 
     request('https://evening-inlet-45238.herokuapp.com/api-desks/', option, requestCallbackloadDesk);
