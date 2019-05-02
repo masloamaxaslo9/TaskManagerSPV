@@ -41,7 +41,7 @@ function getDataLogin(event) {
           body: JSON.stringify(userLogin)
       };
 
-      requireAuth('http://127.0.0.1:8000/api-users/login/', option, requireAuthCallbackLogin);
+      requireAuth('https://evening-inlet-45238.herokuapp.com/api-users/login/', option, requireAuthCallbackLogin);
 
       function requireAuthCallbackLogin(data) {
           if (data.status !== 200) {
@@ -50,7 +50,21 @@ function getDataLogin(event) {
               div.innerText = data.statusText;
               document.forms.loginForm.appendChild(div);
           } else {
-              document.forms.loginForm.submit();
+            let response = data;
+            response.json().then(data => ({
+              data: data,
+              status: response.status
+            })
+              ).then(res => {
+           console.log(res.data);
+           setCookie('username', res.data.username);
+           setCookie('first_name', res.data.first_name);
+           setCookie('last_name', res.data.last_name);
+           setCookie('user_id', res.data.user_id);
+           setCookie('email', res.data.email);
+           setCookie('sessionid', res.data.sessionid);
+           });
+            document.forms.loginForm.submit();
           }
       }
   }
@@ -91,7 +105,7 @@ function getDataRegister(event) {
           body: JSON.stringify(userRegister)
       };
 
-      requireAuth('http://127.0.0.1:8000/api-users/register/', option, requireAuthCallbackRegister);
+      requireAuth('https://evening-inlet-45238.herokuapp.com/api-users/register/', option, requireAuthCallbackRegister);
 
       function requireAuthCallbackRegister(data) {
 
@@ -106,7 +120,23 @@ function getDataRegister(event) {
                           document.getElementById('error').innerText = result.email;
                       }
                   })
+
           } else {
+              let response = data;
+              response.json()
+                  .then(data => ({
+                      data: data,
+                      status: response.status
+                  }))
+                  .then(res => {
+                  console.log(res.data);
+                  setCookie('username', res.data.username);
+                  setCookie('first_name', res.data.first_name);
+                  setCookie('last_name', res.data.last_name);
+                  setCookie('user_id', res.data.user_id);
+                  setCookie('email', res.data.email);
+                  setCookie('sessionid', res.data.sessionid);
+              });
               document.forms.registerForm.submit();
           }
       }

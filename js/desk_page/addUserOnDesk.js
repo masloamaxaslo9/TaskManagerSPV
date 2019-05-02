@@ -36,7 +36,7 @@ function addUser() {
 
         console.log(option);
 
-        request(`http://127.0.0.1:8000/api-desks/${getCookie('desk_id')}/rules/`, option, callBackAddUser);
+        request(`https://evening-inlet-45238.herokuapp.com/api-desks/${getCookie('desk_id')}/rules/`, option, callBackAddUser);
     }
 }
 

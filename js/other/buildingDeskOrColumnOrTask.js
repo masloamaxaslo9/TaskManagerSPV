@@ -42,11 +42,11 @@ function funcCreate(event) {
     if (!validator(formName)) {
         return false;
     } else {
-        let csrftoken = getCookie('csrftoken');
+        let sessionid = getCookie('sessionid');
         let option = {
             method: 'POST',
             headers: {
-                'X-CSRFToken': csrftoken,
+                'sessionid': sessionid,
                 'Accept': 'application/json',
                 'Content-Type': contentType
             },
@@ -55,7 +55,7 @@ function funcCreate(event) {
         };
 
 
-        request(`http://127.0.0.1:8000${url}`, option, requestCallbackCreate);
+        request(`https://evening-inlet-45238.herokuapp.com${url}`, option, requestCallbackCreate);
     }
 }
 

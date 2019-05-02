@@ -28,7 +28,7 @@ function createComment(action, obj) {
 
     if (!validator(action)) return false;
 
-    request(`http://127.0.0.1:8000/api-desks/${getCookie('desk_id')}/columns/${getCookie('column_id')}/tasks/${getCookie('task_id')}/comments/create/`, option, callBackCommentsCreate);
+    request(`https://evening-inlet-45238.herokuapp.com/api-desks/${getCookie('desk_id')}/columns/${getCookie('column_id')}/tasks/${getCookie('task_id')}/comments/create/`, option, callBackCommentsCreate);
 
     function callBackCommentsCreate(result) {
         result.json()
