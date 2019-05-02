@@ -110,7 +110,6 @@ function getDataRegister(event) {
       function requireAuthCallbackRegister(data) {
 
           if (data.status !== 201) {
-              alert('собака');
               let forTextError = data.json();
               forTextError
                   .then((result) => {
@@ -123,7 +122,6 @@ function getDataRegister(event) {
                   })
 
           } else {
-              alert('собака 1');
               let response = data;
               response.json()
                   .then(data => ({
